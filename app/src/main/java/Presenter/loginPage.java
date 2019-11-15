@@ -6,13 +6,17 @@ import android.os.Bundle;
 
 import com.dev.TP2_Mobile.R;
 
-public class loginPage extends AppCompatActivity {
+import View.LoginPageView;
+
+public class LoginPage extends AppCompatActivity {
+
+    LoginPageView loginPageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-
+        loginPageView = new LoginPageView(this);
     }
 }
