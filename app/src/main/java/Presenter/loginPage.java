@@ -8,7 +8,11 @@ import android.os.Bundle;
 
 import com.dev.TP2_Mobile.R;
 
-public class loginPage extends AppCompatActivity {
+import View.LoginPageView;
+
+public class LoginPage extends AppCompatActivity {
+
+    LoginPageView loginPageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,5 +25,6 @@ public class loginPage extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
 
+        loginPageView = new LoginPageView(this);
     }
 }
