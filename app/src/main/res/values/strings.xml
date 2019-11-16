@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TP2-Dev-Mobile</string>
+    <string name="app_name">Défi Photo</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
 </resources>
