@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.dev.TP2_Mobile.R;
 
-public class TableauDeBord extends AppCompatActivity {
+public class View_MetierEtudiant extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tableau_de_bord);
+        setContentView(R.layout.activity_metier_etudiant);
     }
 }

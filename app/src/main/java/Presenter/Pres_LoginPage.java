@@ -16,15 +16,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import Model.Constants.Constants;
-import View.LoginPageView;
+import View_LoginPage;
 
 import static Model.Constants.Constants.*;
 
 
 public class Pres_LoginPage extends AppCompatActivity {
 
-    LoginPageView loginPageView;
+    View_LoginPage viewLoginPage;
 
     GoogleSignInClient mGoogleSignInClient;
 
@@ -33,7 +32,7 @@ public class Pres_LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-        loginPageView = new LoginPageView(this);
+        viewLoginPage = new View_LoginPage(this);
 
         // google auth
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
