@@ -22,7 +22,7 @@ import View.LoginPageView;
 import static Model.Constants.Constants.*;
 
 
-public class LoginPage extends AppCompatActivity {
+public class Pres_LoginPage extends AppCompatActivity {
 
     LoginPageView loginPageView;
 

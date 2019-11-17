@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="Presenter.LoginPage">
+        <activity android:name="View.VisualisationSection"></activity>
+        <activity android:name="View.ParamEtudiant" />
+        <activity android:name="View.TableauDeBord" />
+        <activity android:name="View.SectionMetier" />
+        <activity android:name="View.MetierEtudiant" />
+        <activity android:name="Presenter.Pres_LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
