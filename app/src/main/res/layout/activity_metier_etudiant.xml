@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="View.View_MetierEtudiant"
-    android:background="@drawable/gradient_list">
+    tools:context="View.View_MetierEtudiant">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_metier_etudiant"
