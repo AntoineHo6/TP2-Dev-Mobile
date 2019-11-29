@@ -1,7 +1,9 @@
 package View;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -11,9 +13,17 @@ import com.dev.TP2_Mobile.R;
 public class View_LoginPage {
 
     AppCompatActivity activity;
+    Button login;
 
     public View_LoginPage(AppCompatActivity activity) {
         this.activity = activity;
+        login = activity.findViewById(R.id.btnLogin);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMetierEtudiant(0, "add");
+            }
+        });
 
         ConstraintLayout constraintLayout = activity.findViewById(R.id.loginpage_layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
@@ -22,4 +32,12 @@ public class View_LoginPage {
         animationDrawable.start();
     }
 
+    private void openMetierEtudiant(int i, String add) {
+        Intent intent = new Intent(activity.getApplicationContext(), View_MetierEtudiant.class);
+        activity.startActivity(intent);
+
+    }
 }
+
+
+
