@@ -41,6 +41,3 @@ public class View_LoginPage {
 
     }
 }
-
-
-
