@@ -13,7 +13,7 @@ import com.dev.TP2_Mobile.R;
 
 import java.util.ArrayList;
 
-class MetierAdapter extends RecyclerView.Adapter<MetierAdapter.MetierViewHolder> {
+public class MetierAdapter extends RecyclerView.Adapter<MetierAdapter.MetierViewHolder> {
     private ArrayList<String> list;
     private OnItemClickListener listener;
 

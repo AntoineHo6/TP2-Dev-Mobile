@@ -17,11 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="View.View_VisualisationSection"></activity>
-        <activity android:name="View.View_ParamEtudiant" />
-        <activity android:name="View.View_TableauDeBord" />
-        <activity android:name="View.View_SectionMetier" />
-        <activity android:name="View.View_MetierEtudiant" />
+        <activity android:name="Presenter.Pres_TableauDeBord"></activity>
+        <activity android:name="Presenter.Pres_Metier" />
     </application>
 
 </manifest>
