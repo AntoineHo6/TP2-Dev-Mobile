@@ -5,27 +5,21 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.TP2_Mobile.R;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class View_MetierEtudiant extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,18 +28,6 @@ public class View_MetierEtudiant extends AppCompatActivity
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private MetierAdapter adapter;
-
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class View_MetierEtudiant extends AppCompatActivity {
-
-    ConstraintLayout layout;
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private MetierAdapter adapter;
-
 
 
     @Override
