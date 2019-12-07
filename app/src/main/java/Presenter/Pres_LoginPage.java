@@ -59,19 +59,8 @@ public class Pres_LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //openMetierEtudiant();
-                int ErrorCode = DataBase.ConnectUser(Username.getText().toString().trim(), Password.getText().toString().trim());
 
-                if(ErrorCode == 1) {
-                    Username.setError("Invalid");
-                    Password.setError("Invalid");
-                }
-                else {
-
-                    int typeUser = Integer.parseInt(DataBase.role_id);
-
-                    if (typeUser == 2) openTableauDeBord();
-                    else openMetierEtudiant();
-                }
+                DataBase.ConnectUser(Username, Password);
             }
         });
     }
@@ -99,16 +88,5 @@ public class Pres_LoginPage extends AppCompatActivity {
     private void googleSignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-
-    private void openMetierEtudiant() {
-        Intent intent = new Intent(getApplicationContext(), Pres_Metier.class);
-        startActivity(intent);
-    }
-
-    private void openTableauDeBord() {
-        Intent intent = new Intent(getApplicationContext(), Pres_TableauDeBord.class);
-        startActivity(intent);
     }
 }

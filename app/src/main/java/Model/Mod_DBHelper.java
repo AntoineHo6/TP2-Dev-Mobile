@@ -1,7 +1,9 @@
 package Model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -17,6 +19,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import Presenter.Pres_Metier;
+import Presenter.Pres_TableauDeBord;
+
 public class Mod_DBHelper {
 
     private final String API = "https://api3.defiphotos.tk/api/";
@@ -26,13 +31,15 @@ public class Mod_DBHelper {
     public String role_id = "";
 
     private Context loginContext;
-    private int ErrorCode = 0;
 
     public Mod_DBHelper(Context loginContext){
         this.loginContext = loginContext;
     }
 
-    public int ConnectUser(String email, String password){
+    public void TakeIntents(){
+
+    }
+    public void ConnectUser(final EditText email, final EditText password){
         DisconnectUser();
 
         JSONObject parameters = new JSONObject();
@@ -55,23 +62,28 @@ public class Mod_DBHelper {
                         access_token = findString(response, "access_token");
                         token_type = findString(response, "token_type");
                         role_id = findString(response, "role_id");
+
+                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
+                        else openMetierEtudiant();
+
+                        Log.v("skjhdaskhj",role_id);
                         obtenirInfo(API+"sections", "sections");
                         obtenirInfo(API+"questions-defaut", "questions-defaut");
                         obtenirInfo(API+"questions-personalisees", "questions-personalisees");
                         obtenirInfo(API+"questions-groupe", "questions-groupe");
 
-                        ErrorCode = 0;
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("onErrorResponse", error.toString());
-                        ErrorCode = 1;
+                        email.setError("Invalid");
+                        password.setError("Invalid");
                     }
                 });
+
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
-        return ErrorCode;
     }
 
     public static String findString(JSONObject jObj, String findKey) {
@@ -209,7 +221,15 @@ public class Mod_DBHelper {
     public void TypeOfUser(){
 
     }
+    private void openMetierEtudiant() {
+        Intent intent = new Intent(loginContext, Pres_Metier.class);
+        loginContext.startActivity(intent);
+    }
 
+    private void openTableauDeBord() {
+        Intent intent = new Intent(loginContext, Pres_TableauDeBord.class);
+        loginContext.startActivity(intent);
+    }
 
 
 }
