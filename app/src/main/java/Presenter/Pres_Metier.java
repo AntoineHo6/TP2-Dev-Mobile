@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,11 +18,9 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Presenter.MetierAdapter;
 
 public class Pres_Metier extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
-    ConstraintLayout layout;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private MetierAdapter adapter;
@@ -32,7 +29,6 @@ public class Pres_Metier extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        layout = findViewById(R.id.recycleview_metier_etudiant);
 
         setContentView(R.layout.activity_metier_etudiant);
 
