@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+import Model.Mod_DBHelper;
 import View.View_LoginPage;
 
 import static Model.Constants.Constants.RC_SIGN_IN;
@@ -24,14 +25,14 @@ import static Model.Constants.Constants.RC_SIGN_IN;
 public class Pres_LoginPage extends AppCompatActivity {
 
     View_LoginPage viewLoginPage;
-
+    Mod_DBHelper DataBase;
     GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
-
+        DataBase = new Mod_DBHelper(this);
         viewLoginPage = new View_LoginPage(this);
 
         // google auth
@@ -52,6 +53,7 @@ public class Pres_LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //openMetierEtudiant();
+                DataBase.ConnectUser("hshsh", "sjslslk");
                 openTableauDeBord();
             }
         });
