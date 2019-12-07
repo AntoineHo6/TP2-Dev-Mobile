@@ -1,4 +1,4 @@
 package Presenter;
 
-public class Pres_Metier {
+public interface Pres_Metier {
 }

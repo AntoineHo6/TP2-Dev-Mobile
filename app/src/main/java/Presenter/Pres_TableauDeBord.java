@@ -1,5 +1,6 @@
 package Presenter;
 
+
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,10 +23,6 @@ public class Pres_TableauDeBord extends AppCompatActivity {
         view = new View_TableauDeBord();
         model = new Mod_TableauDeBord();
     }
-
-
-
-
 
 
 }
