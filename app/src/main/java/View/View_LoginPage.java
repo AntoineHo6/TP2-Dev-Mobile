@@ -1,10 +1,6 @@
 package View;
 
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;

@@ -12,4 +12,11 @@
 
     <string name="menu_accueil">Accueil</string>
     <string name="envoyer_mail">Envoyer un email</string>
+
+    <string name="matiere_et_produits">Matière et produits</string>
+    <string name="equipements">Équipements</string>
+    <string name="tache_et_exigences">Tâche et exigences</string>
+    <string name="individu">Individu</string>
+    <string name="env_de_travail">Environnement de travail</string>
+    <string name="res_humaines">Ressources humaines</string>
 </resources>

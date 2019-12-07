@@ -47,6 +47,14 @@ public class Pres_LoginPage extends AppCompatActivity {
                 googleSignIn();
             }
         });
+
+        findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //openMetierEtudiant();
+                openTableauDeBord();
+            }
+        });
     }
 
     @Override
@@ -72,5 +80,16 @@ public class Pres_LoginPage extends AppCompatActivity {
     private void googleSignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+
+    private void openMetierEtudiant() {
+        Intent intent = new Intent(getApplicationContext(), Pres_Metier.class);
+        startActivity(intent);
+    }
+
+    private void openTableauDeBord() {
+        Intent intent = new Intent(getApplicationContext(), Pres_TableauDeBord.class);
+        startActivity(intent);
     }
 }
