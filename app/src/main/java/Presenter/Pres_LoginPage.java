@@ -86,7 +86,7 @@ public class Pres_LoginPage extends AppCompatActivity {
 
 
     private void openMetierEtudiant() {
-        Intent intent = new Intent(getApplicationContext(), Pres_Metier.class);
+        Intent intent = new Intent(getApplicationContext(), Pres_MetierEtudiant.class);
         startActivity(intent);
     }
 

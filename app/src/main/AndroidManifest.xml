@@ -17,12 +17,11 @@
         <activity android:name="Presenter.Pres_LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="Presenter.Pres_TableauDeBord"></activity>
-        <activity android:name="Presenter.Pres_Metier" />
+        <activity android:name="Presenter.Pres_MetierEtudiant"></activity>
     </application>
 
 </manifest>
