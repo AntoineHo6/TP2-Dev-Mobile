@@ -23,15 +23,16 @@ public class Mod_DBHelper {
 
     private String  access_token = "";
     private String  token_type = "";
-    private String role_id = "";
+    public String role_id = "";
 
     private Context loginContext;
+    private int ErrorCode = 0;
 
     public Mod_DBHelper(Context loginContext){
         this.loginContext = loginContext;
     }
 
-    public void ConnectUser(String email, String password){
+    public int ConnectUser(String email, String password){
         DisconnectUser();
 
         JSONObject parameters = new JSONObject();
@@ -44,10 +45,12 @@ public class Mod_DBHelper {
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
-                API+"auth/connexion",
+                API + "auth/connexion",
                 parameters,
                 new Response.Listener<JSONObject>() {
-                    @Override public void onResponse(JSONObject response) {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
                         Log.i("onResponse", response.toString());
                         access_token = findString(response, "access_token");
                         token_type = findString(response, "token_type");
@@ -56,14 +59,19 @@ public class Mod_DBHelper {
                         obtenirInfo(API+"questions-defaut", "questions-defaut");
                         obtenirInfo(API+"questions-personalisees", "questions-personalisees");
                         obtenirInfo(API+"questions-groupe", "questions-groupe");
+
+                        ErrorCode = 0;
                     }
                 },
                 new Response.ErrorListener() {
-                    @Override public void onErrorResponse(VolleyError error) {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
                         Log.e("onErrorResponse", error.toString());
+                        ErrorCode = 1;
                     }
                 });
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+        return ErrorCode;
     }
 
     public static String findString(JSONObject jObj, String findKey) {
@@ -201,5 +209,7 @@ public class Mod_DBHelper {
     public void TypeOfUser(){
 
     }
+
+
 
 }

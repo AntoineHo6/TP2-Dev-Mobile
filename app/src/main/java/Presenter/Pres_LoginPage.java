@@ -59,8 +59,19 @@ public class Pres_LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //openMetierEtudiant();
-                DataBase.ConnectUser("hshsh", "sjslslk");
-                openTableauDeBord();
+                int ErrorCode = DataBase.ConnectUser(Username.getText().toString().trim(), Password.getText().toString().trim());
+
+                if(ErrorCode == 1) {
+                    Username.setError("Invalid");
+                    Password.setError("Invalid");
+                }
+                else {
+
+                    int typeUser = Integer.parseInt(DataBase.role_id);
+
+                    if (typeUser == 2) openTableauDeBord();
+                    else openMetierEtudiant();
+                }
             }
         });
     }
