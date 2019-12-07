@@ -44,7 +44,7 @@ public class Pres_LoginPage extends AppCompatActivity {
         findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
+                googleSignIn();
             }
         });
     }
@@ -69,7 +69,7 @@ public class Pres_LoginPage extends AppCompatActivity {
         }
     }
 
-    private void signIn() {
+    private void googleSignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
