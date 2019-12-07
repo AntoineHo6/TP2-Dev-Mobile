@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
@@ -13,8 +14,10 @@ import com.dev.TP2_Mobile.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class View_MetierEtudiant extends AppCompatActivity {
+import Presenter.Pres_SelectionMetier;
 
+public class View_MetierEtudiant extends AppCompatActivity {
+    AppCompatActivity activity;
     ConstraintLayout layout;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -25,6 +28,7 @@ public class View_MetierEtudiant extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.activity = this;
         layout = findViewById(R.id.recycleview_metier_etudiant);
 
         setContentView(R.layout.activity_metier_etudiant);
@@ -62,7 +66,8 @@ public class View_MetierEtudiant extends AppCompatActivity {
     }
 
     private void notifyItemSelected(int position) {
-
+        Intent intent = new Intent(activity.getApplicationContext(), Pres_SelectionMetier.class);
+        activity.startActivity(intent);
 
 
     }

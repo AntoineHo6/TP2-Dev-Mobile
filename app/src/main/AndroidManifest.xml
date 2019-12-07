@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="View.View_VisualisationSection"></activity>
+        <activity android:name="Presenter.Pres_SelectionMetier"></activity>
+        <activity android:name="View.View_VisualisationSection" />
         <activity android:name="View.View_ParamEtudiant" />
         <activity android:name="View.View_TableauDeBord" />
         <activity android:name="View.View_SectionMetier" />
