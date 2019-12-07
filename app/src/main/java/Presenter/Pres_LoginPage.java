@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,8 @@ public class Pres_LoginPage extends AppCompatActivity {
     View_LoginPage viewLoginPage;
     Mod_DBHelper DataBase;
     GoogleSignInClient mGoogleSignInClient;
+    EditText Username;
+    EditText Password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,9 @@ public class Pres_LoginPage extends AppCompatActivity {
         setContentView(R.layout.login_page);
         DataBase = new Mod_DBHelper(this);
         viewLoginPage = new View_LoginPage(this);
+
+        Username =(EditText) findViewById(R.id.etUserEmail);
+        Password = (EditText) findViewById(R.id.etUserPassword);
 
         // google auth
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
