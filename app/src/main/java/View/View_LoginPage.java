@@ -17,7 +17,6 @@ import Model.Mod_DBHelper;
 public class View_LoginPage {
 
     AppCompatActivity activity;
-    Mod_DBHelper DataBase;
     Button login;
 
     public View_LoginPage(AppCompatActivity activity) {
@@ -29,7 +28,6 @@ public class View_LoginPage {
                 openMetierEtudiant(0, "add");
             }
         });
-        DataBase = new Mod_DBHelper(this.activity);
         ConstraintLayout constraintLayout = activity.findViewById(R.id.loginpage_layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2000);
@@ -39,7 +37,6 @@ public class View_LoginPage {
 
     private void openMetierEtudiant(int i, String add) {
         Intent intent = new Intent(activity.getApplicationContext(), View_MetierEtudiant.class);
-        DataBase.ConnectUser("lol", "sjsjs");
         activity.startActivity(intent);
 
     }
