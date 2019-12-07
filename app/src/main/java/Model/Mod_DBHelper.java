@@ -44,7 +44,7 @@ public class Mod_DBHelper {
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
-                "https://testing.defiphotos.tk/api/auth/connexion",
+                API+"auth/connexion",
                 parameters,
                 new Response.Listener<JSONObject>() {
                     @Override public void onResponse(JSONObject response) {
