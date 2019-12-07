@@ -1,12 +1,12 @@
 package Presenter;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dev.TP2_Mobile.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 
 import View.View_LoginPage;
 
-import static Model.Constants.Constants.*;
+import static Model.Constants.Constants.RC_SIGN_IN;
 
 
 public class Pres_LoginPage extends AppCompatActivity {
