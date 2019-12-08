@@ -58,8 +58,8 @@ public class Pres_LoginPage extends AppCompatActivity {
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataBase.ConnectUser("hshsh", "sjslslk");
-                openMetierEtudiant();
+                DataBase.ConnectUser(Username, Password);
+                //openMetierEtudiant();
                 //openTableauDeBord();
             }
         });

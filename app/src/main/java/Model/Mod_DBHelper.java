@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import Presenter.Pres_Metier;
+import Presenter.Pres_MetierEtudiant;
 import Presenter.Pres_TableauDeBord;
 
 public class Mod_DBHelper {
@@ -63,7 +63,10 @@ public class Mod_DBHelper {
                         token_type = findString(response, "token_type");
                         role_id = findString(response, "role_id");
 
-                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
+//                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
+//                        else openMetierEtudiant();
+                        // TEMPORARY
+                        if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
                         else openMetierEtudiant();
 
                         Log.v("skjhdaskhj",role_id);
@@ -222,7 +225,7 @@ public class Mod_DBHelper {
 
     }
     private void openMetierEtudiant() {
-        Intent intent = new Intent(loginContext, Pres_Metier.class);
+        Intent intent = new Intent(loginContext, Pres_MetierEtudiant.class);
         loginContext.startActivity(intent);
     }
 
