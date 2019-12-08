@@ -54,7 +54,8 @@ public class Pres_LoginPage extends AppCompatActivity {
             public void onClick(View view) {
                 //openMetierEtudiant();
                 DataBase.ConnectUser("hshsh", "sjslslk");
-                openTableauDeBord();
+                //openTableauDeBord();
+                openSectionMetierProf();
             }
         });
     }
@@ -92,6 +93,11 @@ public class Pres_LoginPage extends AppCompatActivity {
 
     private void openTableauDeBord() {
         Intent intent = new Intent(getApplicationContext(), Pres_TableauDeBord.class);
+        startActivity(intent);
+    }
+
+    private void openSectionMetierProf() {
+        Intent intent = new Intent(getApplicationContext(), Pres_SectionMetier_Prof.class);
         startActivity(intent);
     }
 }

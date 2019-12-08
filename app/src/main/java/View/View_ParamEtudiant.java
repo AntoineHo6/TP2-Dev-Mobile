@@ -1,16 +1,13 @@
 package View;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dev.TP2_Mobile.R;
-
 public class View_ParamEtudiant extends AppCompatActivity {
+    AppCompatActivity activity;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_param_etudiant);
+    public View_ParamEtudiant(AppCompatActivity activity) {
+        this.activity = activity;
     }
+
+
 }
