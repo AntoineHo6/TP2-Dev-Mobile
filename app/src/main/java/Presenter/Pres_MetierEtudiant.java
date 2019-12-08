@@ -74,9 +74,27 @@ public class Pres_MetierEtudiant extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_accueil) {
-            openVisualiserSection();
+
         }
-        else if (id == R.id.nav_send) {
+        else if (id == R.id.nav_matiere_et_produits) {
+            openVisualiserSection(0);
+        }
+        else if (id == R.id.nav_equipements) {
+            openVisualiserSection(1);
+        }
+        else if (id == R.id.nav_tache_et_exigences) {
+            openVisualiserSection(2);
+        }
+        else if (id == R.id.nav_individu) {
+            openVisualiserSection(3);
+        }
+        else if (id == R.id.nav_env_de_travail) {
+            openVisualiserSection(4);
+        }
+        else if (id == R.id.nav_res_humaines) {
+            openVisualiserSection(5);
+        }
+        else {  // envoyer un email
 
         }
 
@@ -85,8 +103,9 @@ public class Pres_MetierEtudiant extends AppCompatActivity
         return true;
     }
 
-    private void openVisualiserSection() {
+    private void openVisualiserSection(int idSection) {
         Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+        intent.putExtra("idSection", idSection);
         startActivity(intent);
     }
 
