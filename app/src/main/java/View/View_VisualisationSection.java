@@ -11,6 +11,6 @@ public class View_VisualisationSection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visualisation_section);
+        setContentView(R.layout.activity_visualiser_section);
     }
 }

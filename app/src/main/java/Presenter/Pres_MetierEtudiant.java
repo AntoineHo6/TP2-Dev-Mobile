@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +18,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Pres_MetierEtudiant extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +73,8 @@ public class Pres_MetierEtudiant extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
+        if (id == R.id.nav_accueil) {
+            openVisualiserSection();
         }
         else if (id == R.id.nav_send) {
 
@@ -83,6 +83,11 @@ public class Pres_MetierEtudiant extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openVisualiserSection() {
+        Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+        startActivity(intent);
     }
 
 }

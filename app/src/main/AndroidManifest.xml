@@ -22,6 +22,7 @@
         </activity>
         <activity android:name="Presenter.Pres_TableauDeBord"></activity>
         <activity android:name="Presenter.Pres_MetierEtudiant"></activity>
+        <activity android:name="Presenter.Pres_VisualiserSection"></activity>
     </application>
 
 </manifest>
