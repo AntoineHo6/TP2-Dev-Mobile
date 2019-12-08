@@ -5,6 +5,7 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import com.dev.TP2_Mobile.R;
 
@@ -19,6 +20,9 @@ public class Pres_VisualiserSection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualiser_section);
+
+        Fragment frag = new VisualiserSectionFrag();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
