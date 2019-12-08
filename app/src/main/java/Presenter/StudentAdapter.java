@@ -77,7 +77,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     public int getItemCount() {
         return list.size();
     }
-    
+
     }
 
 

@@ -43,6 +43,12 @@ public class Pres_TableauDeBord extends AppCompatActivity
         list.add(new Student ("Antoine Ho", 50));
         list.add(new Student("Kha Pham", 93));
         list.add(new Student("Luke Noodley", 70));
+        list.add(new Student("Demetrious Johnson", 30));
+        list.add(new Student("Tom Jerry", 100));
+        list.add(new Student("Damien DeGaule", 76));
+        list.add(new Student("Dwayne Johnson", 60));
+        list.add(new Student("Vin Diesel", 60));
+
 
         buildRecycleView();
 
