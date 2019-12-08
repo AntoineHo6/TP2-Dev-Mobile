@@ -221,6 +221,7 @@ public class Mod_DBHelper {
     public void TypeOfUser(){
 
     }
+
     private void openMetierEtudiant() {
         Intent intent = new Intent(loginContext, Pres_Metier.class);
         loginContext.startActivity(intent);

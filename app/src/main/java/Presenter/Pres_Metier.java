@@ -19,7 +19,6 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import View.MetierAdapter;
 
 public class Pres_Metier extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -75,7 +74,7 @@ public class Pres_Metier extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
             return true;
         }
 

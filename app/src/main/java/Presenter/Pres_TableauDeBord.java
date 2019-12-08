@@ -10,18 +10,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.TP2_Mobile.R;
 import com.google.android.material.navigation.NavigationView;
 
-import Model.Mod_TableauDeBord;
+import java.util.ArrayList;
+
 import View.View_TableauDeBord;
+import Model.Mod_TableauDeBord;
 
 public class Pres_TableauDeBord extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     View_TableauDeBord view;
     Mod_TableauDeBord model;
+    private RecyclerView recyclerView;
+    private StudentAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<Student> list;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,12 @@ public class Pres_TableauDeBord extends AppCompatActivity
 
         view = new View_TableauDeBord();
         model = new Mod_TableauDeBord();
+        list = new ArrayList<Student>();
+        list.add(new Student ("Antoine Ho", 50));
+        list.add(new Student("Kha Pham", 93));
+        list.add(new Student("Luke Noodley", 70));
+
+        buildRecycleView();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -40,6 +55,32 @@ public class Pres_TableauDeBord extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void buildRecycleView() {
+        recyclerView = findViewById(R.id.recycleview_tab_bord);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        adapter = new StudentAdapter(list);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new StudentAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                notifyItemSelected(position);
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+
+            }
+
+        });
+    }
+
+    private void notifyItemSelected(int position) {
     }
 
     @Override
@@ -67,7 +108,7 @@ public class Pres_TableauDeBord extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
             return true;
         }
 
