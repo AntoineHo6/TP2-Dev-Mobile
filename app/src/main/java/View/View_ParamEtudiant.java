@@ -1,15 +1,12 @@
 package View;
-
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.dev.TP2_Mobile.R;
-
 import java.util.ArrayList;
-
 import Adapter.AdapterSectionMetierProf;
 import Model.sectionMetier;
 
@@ -22,8 +19,11 @@ public class View_ParamEtudiant extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_AppCompat_Light_DarkActionBar);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_param_etudiant);
+        setContentView(R.layout.activity_param_metier_etudiant_prof);
+        getSupportActionBar().setTitle("Nom et prénom éléve");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
         section = new ArrayList<sectionMetier>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycleview_metier_etudiant);
@@ -33,6 +33,7 @@ public class View_ParamEtudiant extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(layoutManager);
+
         ajouterDonnerList();
 
         mAdapter = new AdapterSectionMetierProf(section);
@@ -46,7 +47,12 @@ public class View_ParamEtudiant extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new AdapterSectionMetierProf.OnItemClickListener() {
             @Override
             public void checkBox(){
+                //Notifier les changements dans la BD
+            }
 
+            @Override
+            public void onEditClick(int position) {
+                //Ouvre l'activité visualiser section
             }
         });
     }
@@ -58,5 +64,10 @@ public class View_ParamEtudiant extends AppCompatActivity {
         section.add(new sectionMetier("Individu", false));
         section.add(new sectionMetier("Environnement de travail", false));
         section.add(new sectionMetier("Ressources humaines", false));
+    }
+
+    public void confirmerButtonClick(View view) {
+        //sauvegarderDonner();
+        finish();
     }
 }

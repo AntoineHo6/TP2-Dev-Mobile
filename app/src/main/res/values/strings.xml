@@ -19,4 +19,6 @@
     <string name="individu">Individu</string>
     <string name="env_de_travail">Environnement de travail</string>
     <string name="res_humaines">Ressources humaines</string>
+
+    <string name="confirmer_boutton">Confirmer</string>
 </resources>

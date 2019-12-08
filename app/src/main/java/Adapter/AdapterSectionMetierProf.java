@@ -21,6 +21,7 @@ public class AdapterSectionMetierProf
 
     public interface OnItemClickListener {
         void checkBox();
+        void onEditClick(int position);
     }
 
     public AdapterSectionMetierProf(ArrayList<sectionMetier> section) {
@@ -44,6 +45,18 @@ public class AdapterSectionMetierProf
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             listener.checkBox();
+                        }
+                    }
+                }
+            });
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = SectionMetierProfViewHolder.this.getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onEditClick(position);
                         }
                     }
                 }
@@ -73,7 +86,7 @@ public class AdapterSectionMetierProf
     public void onBindViewHolder(@NonNull SectionMetierProfViewHolder holder, int position) {
         sectionMetier nouvelleSection = section.get(position);
 
-        holder.letter.setText(nouvelleSection.getFirstLetter());
+        holder.letter.setText(String.valueOf(nouvelleSection.getFirstLetter()));
         holder.checkBoxActif.setChecked(nouvelleSection.isActive());
     }
 

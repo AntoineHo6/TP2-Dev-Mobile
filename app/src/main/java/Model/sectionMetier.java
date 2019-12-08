@@ -9,6 +9,7 @@ public class sectionMetier {
     public sectionMetier(String name, boolean isActive) {
         this.sectionName = name;
         this.isActive = isActive;
+        createFirstLetter();
     }
 
     private void createFirstLetter(){
