@@ -3,6 +3,18 @@
     <string name="email">email</string>
     <string name="password">password</string>
 
+
+
+
+    <string name="Matiereetproduits">Matières et produits</string>
+    <string name="equipements">Équipements</string>
+    <string name="TachesEtExigences">Tâches et exigences</string>
+    <string name="Individu">Individu</string>
+    <string name="EnvironnmentDeTravail">Environnement de travail</string>
+    <string name="RessourcesHumaines">Ressources Humaines</string>
+
+    <!--@string/password-->
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

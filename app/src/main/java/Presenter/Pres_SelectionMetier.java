@@ -21,7 +21,7 @@ public class Pres_SelectionMetier extends AppCompatActivity {
 
     View_SelectionMetier view = new View_SelectionMetier(this);
     Mod_SelectionMetier mod = new Mod_SelectionMetier();
-
+    Fragment selectedFragment = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +29,15 @@ public class Pres_SelectionMetier extends AppCompatActivity {
 
         //Fragment_Home1 fragment = new Fragment_Home1();
         //getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
-
+        selectedFragment = new Fragment_Home1();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment selectedFragment = null;
+
             switch(menuItem.getItemId()){
                 case R.id.nav_home:
                     selectedFragment = new Fragment_Home1();
