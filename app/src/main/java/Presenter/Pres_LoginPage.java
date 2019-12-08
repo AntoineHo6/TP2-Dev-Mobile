@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 
 import Model.Mod_DBHelper;
 import View.View_LoginPage;
+import View.View_ParamEtudiant;
 
 import static Model.Constants.Constants.RC_SIGN_IN;
 
@@ -97,7 +98,7 @@ public class Pres_LoginPage extends AppCompatActivity {
     }
 
     private void openSectionMetierProf() {
-        Intent intent = new Intent(getApplicationContext(), Pres_SectionMetier_Prof.class);
+        Intent intent = new Intent(getApplicationContext(), View_ParamEtudiant.class);
         startActivity(intent);
     }
 }

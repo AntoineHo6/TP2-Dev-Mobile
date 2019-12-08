@@ -8,7 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.dev.TP2_Mobile.R;
 
 
-public class View_LoginPage {
+public class View_LoginPage extends AppCompatActivity {
 
     AppCompatActivity activity;
 
