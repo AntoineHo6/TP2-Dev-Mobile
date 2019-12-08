@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.TP2_Mobile.R;
 
+import java.util.ArrayList;
+
 import Adapter.AdapterSectionMetierProf;
+import Model.sectionMetier;
 
 public class View_ParamEtudiant extends AppCompatActivity {
 
@@ -21,6 +24,7 @@ public class View_ParamEtudiant extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_param_etudiant);
+        list = new ArrayList<sectionMetier>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycleview_metier_etudiant);
 
@@ -42,5 +46,9 @@ public class View_ParamEtudiant extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void ajouterDonnerList(){
+        list.add();
     }
 }
