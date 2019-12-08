@@ -3,6 +3,7 @@ package Presenter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import com.dev.TP2_Mobile.R;
 
 import java.util.ArrayList;
 
-public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.NoteViewHolder> {
+public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
     private ArrayList<Student> list;
     private OnItemClickListener listener;
 
@@ -24,12 +25,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.NoteView
         void onDeleteClick(int position);
     }
 
-    public class NoteViewHolder extends RecyclerView.ViewHolder {
+    public class StudentViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvNomEtudiant;
-        private ProgressBar pbEtudiant;
+        public TextView tvNomEtudiant;
+        public ProgressBar pbEtudiant;
 
-        public NoteViewHolder(View view, final OnItemClickListener listener) {
+        public StudentViewHolder(View view, final OnItemClickListener listener) {
             super(view);
             tvNomEtudiant = view.findViewById(R.id.nomEtudiantTabBord);
             pbEtudiant = view.findViewById(R.id.progressBarTabBord);
@@ -49,7 +50,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.NoteView
         }
     }
 
-    public StudentAdapter(ArrayList<Student> list) { this.list = list;
+    public StudentAdapter(ArrayList<Student> list) {
+        this.list = list;
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -58,14 +60,14 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.NoteView
 
     @NonNull
     @Override
-    public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_tab_bord, parent, false);
-        NoteViewHolder ivh = new NoteViewHolder(v, listener);
+        StudentViewHolder ivh = new StudentViewHolder(v, listener);
         return ivh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
         Student student = list.get(position);
         holder.tvNomEtudiant.setText(student.getName());
         holder.pbEtudiant.setProgress(student.getProgression());
@@ -75,6 +77,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.NoteView
     public int getItemCount() {
         return list.size();
     }
+    
+    }
 
 
-}
+
