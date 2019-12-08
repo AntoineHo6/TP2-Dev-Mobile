@@ -1,7 +1,9 @@
 package Model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -17,13 +19,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import Presenter.Pres_Metier;
+import Presenter.Pres_TableauDeBord;
+
 public class Mod_DBHelper {
 
     private final String API = "https://api3.defiphotos.tk/api/";
 
     private String  access_token = "";
     private String  token_type = "";
-    private String role_id = "";
+    public String role_id = "";
 
     private Context loginContext;
 
@@ -31,7 +36,10 @@ public class Mod_DBHelper {
         this.loginContext = loginContext;
     }
 
-    public void ConnectUser(String email, String password){
+    public void TakeIntents(){
+
+    }
+    public void ConnectUser(final EditText email, final EditText password){
         DisconnectUser();
 
         JSONObject parameters = new JSONObject();
@@ -44,25 +52,37 @@ public class Mod_DBHelper {
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
-                API+"auth/connexion",
+                API + "auth/connexion",
                 parameters,
                 new Response.Listener<JSONObject>() {
-                    @Override public void onResponse(JSONObject response) {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
                         Log.i("onResponse", response.toString());
                         access_token = findString(response, "access_token");
                         token_type = findString(response, "token_type");
                         role_id = findString(response, "role_id");
+
+                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
+                        else openMetierEtudiant();
+
+                        Log.v("skjhdaskhj",role_id);
                         obtenirInfo(API+"sections", "sections");
                         obtenirInfo(API+"questions-defaut", "questions-defaut");
                         obtenirInfo(API+"questions-personalisees", "questions-personalisees");
                         obtenirInfo(API+"questions-groupe", "questions-groupe");
+
                     }
                 },
                 new Response.ErrorListener() {
-                    @Override public void onErrorResponse(VolleyError error) {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
                         Log.e("onErrorResponse", error.toString());
+                        email.setError("Invalid");
+                        password.setError("Invalid");
                     }
                 });
+
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
     }
 
@@ -201,5 +221,15 @@ public class Mod_DBHelper {
     public void TypeOfUser(){
 
     }
+    private void openMetierEtudiant() {
+        Intent intent = new Intent(loginContext, Pres_Metier.class);
+        loginContext.startActivity(intent);
+    }
+
+    private void openTableauDeBord() {
+        Intent intent = new Intent(loginContext, Pres_TableauDeBord.class);
+        loginContext.startActivity(intent);
+    }
+
 
 }
