@@ -19,8 +19,6 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import View.MetierAdapter;
-
 public class Pres_Metier extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
     ConstraintLayout layout;

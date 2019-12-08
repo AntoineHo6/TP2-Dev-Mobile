@@ -89,4 +89,8 @@ public class Pres_LoginPage extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
+    private void openSectionMetierProf(){
+        Intent intent =
+    }
 }

@@ -18,13 +18,13 @@ public class View_ParamEtudiant extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterSectionMetierProf mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<sectionMetier> list;
+    private ArrayList<sectionMetier> section;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_param_etudiant);
-        list = new ArrayList<sectionMetier>();
+        section = new ArrayList<sectionMetier>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycleview_metier_etudiant);
 
@@ -33,9 +33,12 @@ public class View_ParamEtudiant extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(layoutManager);
+        ajouterDonnerList();
 
-        mAdapter = new AdapterSectionMetierProf();
+        mAdapter = new AdapterSectionMetierProf(section);
         recyclerView.setAdapter(mAdapter);
+
+        ajouterAction();
 
     }
 
@@ -49,6 +52,11 @@ public class View_ParamEtudiant extends AppCompatActivity {
     }
 
     private void ajouterDonnerList(){
-        list.add();
+        section.add(new sectionMetier("Matières et produits", false));
+        section.add(new sectionMetier("Équipements", false));
+        section.add(new sectionMetier("Tâche et exigences", false));
+        section.add(new sectionMetier("Individu", false));
+        section.add(new sectionMetier("Environnement de travail", false));
+        section.add(new sectionMetier("Ressources humaines", false));
     }
 }

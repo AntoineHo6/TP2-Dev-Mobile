@@ -1,4 +1,5 @@
 package Adapter;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -7,14 +8,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.dev.TP2_Mobile.R;
 
+import java.util.ArrayList;
+
+import Model.sectionMetier;
+
 
 public class AdapterSectionMetierProf
         extends RecyclerView.Adapter<AdapterSectionMetierProf.SectionMetierProfViewHolder> {
 
+    private ArrayList<sectionMetier> section;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void checkBox();
+    }
+
+    public AdapterSectionMetierProf(ArrayList<sectionMetier> section) {
+        this.section = section;
     }
 
     public static class SectionMetierProfViewHolder extends RecyclerView.ViewHolder{
@@ -49,17 +59,22 @@ public class AdapterSectionMetierProf
     @NonNull
     @Override
     public SectionMetierProfViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_metier_param_prof, parent, false);
+        SectionMetierProfViewHolder ivh = new SectionMetierProfViewHolder(v, listener);
+        return ivh;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return section.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull SectionMetierProfViewHolder holder, int position) {
+        sectionMetier nouvelleSection = section.get(position);
 
+        holder.letter.setText(nouvelleSection.getFirstLetter());
+        holder.checkBoxActif.setChecked(nouvelleSection.isActive());
     }
 
 
