@@ -125,6 +125,173 @@ public class Mod_DBHelper {
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
     }
 
+    public void AddUser(String nom, String prenom, String email, String mot_de_passe, String mot_de_passe_confirmations){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("nom", nom);
+            parameters.put("prenom", prenom);
+            parameters.put("email", email);
+            parameters.put("mot_de_passe", mot_de_passe);
+            parameters.put("mot_de_passe_confirmation", mot_de_passe_confirmations);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.USERS,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddStage(String internshipName){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("nom_stage", internshipName);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.INTERNSHIPS,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddDefaultQuestion(String question){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("question", question);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.QUESTIONS_DEFAULT,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddGroupQuestion(String question){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("question", question);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.QUESTIONS_GROUP,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddPerQuestion(String question){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("question", question);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.QUESTIONS_PER,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddComment(String commentType, String data){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("comment_type", commentType);
+            parameters.put("data", data);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.COMMENTS,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
     public static String findString(JSONObject jObj, String findKey) {
         String finalValue = "";
         try {
