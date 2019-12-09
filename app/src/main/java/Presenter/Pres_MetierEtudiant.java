@@ -104,9 +104,10 @@ public class Pres_MetierEtudiant extends AppCompatActivity
     }
 
     private void openMetierEtudiant(int idSection) {
-        //Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
-//        intent.putExtra("idSection", idSection);
-//        startActivity(intent);
+        // CHANGER A TRUC DE LUKE
+        Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+        intent.putExtra("idSection", idSection);
+        startActivity(intent);
     }
 
 }
