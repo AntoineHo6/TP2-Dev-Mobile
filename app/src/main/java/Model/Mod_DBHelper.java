@@ -16,8 +16,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import Presenter.Pres_MetierEtudiant;
@@ -31,7 +33,7 @@ public class Mod_DBHelper {
     private String  token_type = "";
     private String role_id = "";
 
-    enum Table {
+    public enum Table {
         SECTIONS("sections"),
         QUESTIONS_DEFAULT("questions-defaut"),
         QUESTIONS_GROUP ("questions-groupe"),
@@ -269,8 +271,48 @@ public class Mod_DBHelper {
     public String GetData(Table tableName,String id){
         TempDB = getSharedPreference(Context.MODE_APPEND);
         String data = TempDB.getString(tableName.getType()+"_"+id, "not_found");
-        Log.v("Ceci est un test", data);
         return data;
+    }
+    public String GetDataColumn(Table tableName,String id, String ColumnName){
+
+        String data = GetData(tableName, id);
+        String[] Columns = data.split(";");
+        String regex = "^"+ColumnName+"$";
+
+        String value= "not_found";
+
+        if(data != "not_found") {
+            for (String field : Columns) {
+
+                if (field.matches(regex)) {
+                    String[] Column = field.split("=");
+                    value = Column[1];
+                }
+            }
+        }
+
+        return value;
+    }
+
+    public List<String> GetTableContent(Table tableName){
+        TempDB = getSharedPreference(Context.MODE_APPEND);
+        String data = "";
+        List<String> tab = new ArrayList<>();
+        int id = 1;
+
+        while(data != "not_found") {
+
+            String strId = Integer.toString(id);
+            data = TempDB.getString(tableName.getType() + "_" + strId, "not_found");
+
+            if(data != "not_found") {
+                tab.add(data);
+            }
+
+            id++;
+        }
+
+        return tab;
     }
     private void openMetierEtudiant() {
         Intent intent = new Intent(loginContext, Pres_MetierEtudiant.class);
