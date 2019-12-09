@@ -23,14 +23,13 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
+import View.View_ParamEtudiant;
 import View.View_TableauDeBord;
 import Model.Mod_TableauDeBord;
 
 public class Pres_TableauDeBord extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    View_TableauDeBord view;
-    Mod_TableauDeBord model;
     private RecyclerView recyclerView;
     private StudentAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -40,10 +39,7 @@ public class Pres_TableauDeBord extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tableau_de_bord);
 
-        view = new View_TableauDeBord();
-        model = new Mod_TableauDeBord();
         list = new ArrayList<Student>();
         list.add(new Student ("Antoine Ho", 50));
         list.add(new Student("Kha Pham", 93));
@@ -53,9 +49,10 @@ public class Pres_TableauDeBord extends AppCompatActivity
         list.add(new Student("Damien DeGaule", 76));
         list.add(new Student("Dwayne Johnson", 60));
         list.add(new Student("Vin Diesel", 60));
+        layoutManager = new LinearLayoutManager(this);
+        adapter = new StudentAdapter(list);
 
-
-        buildRecycleView();
+        setContentView(R.layout.activity_tableau_de_bord);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,13 +63,13 @@ public class Pres_TableauDeBord extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        buildRecycleView();
     }
 
     private void buildRecycleView() {
         recyclerView = findViewById(R.id.recycleview_tab_bord);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        adapter = new StudentAdapter(list);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -80,7 +77,7 @@ public class Pres_TableauDeBord extends AppCompatActivity
         adapter.setOnItemClickListener(new StudentAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                notifyItemSelected(position);
+                notifyItemSelected(position , list.get(position));
             }
 
             @Override
@@ -91,13 +88,16 @@ public class Pres_TableauDeBord extends AppCompatActivity
         });
     }
 
-    private void notifyItemSelected(int position) {
+    private void notifyItemSelected(int position, Student student) {
         Toast.makeText(this.getBaseContext(),list.get(position).getName(),Toast.LENGTH_SHORT).show();
-        openActivity2();
+        openActivity2(student);
     }
 
-    private void openActivity2() {
-        //Start activity of Damien
+    private void openActivity2(Student student) {
+        Intent intent = new Intent(getApplicationContext(),
+                View_ParamEtudiant.class);
+        intent.putExtra("ETUDIANT", student);
+        startActivity(intent);
 
     }
 
@@ -113,7 +113,7 @@ public class Pres_TableauDeBord extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+         //Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_searchview, menu);
 

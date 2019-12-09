@@ -20,7 +20,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     implements Filterable {
     private List<Student> list;
     private List<Student> listFull;
-
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -34,7 +33,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         public TextView tvNomEtudiant;
         public ProgressBar pbEtudiant;
 
-        public StudentViewHolder(View view, final OnItemClickListener listener) {
+        public StudentViewHolder(View view, final StudentAdapter.OnItemClickListener listener) {
             super(view);
             tvNomEtudiant = view.findViewById(R.id.nomEtudiantTabBord);
             pbEtudiant = view.findViewById(R.id.progressBarTabBord);

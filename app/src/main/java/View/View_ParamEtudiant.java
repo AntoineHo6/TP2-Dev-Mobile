@@ -1,4 +1,5 @@
 package View;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,12 @@ import com.dev.TP2_Mobile.R;
 import java.util.ArrayList;
 import Adapter.AdapterSectionMetierProf;
 import Model.sectionMetier;
+import Presenter.Student;
 
 public class View_ParamEtudiant extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private Student nomEtudiant;
     private AdapterSectionMetierProf mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<sectionMetier> section;
@@ -22,7 +25,9 @@ public class View_ParamEtudiant extends AppCompatActivity {
         setTheme(R.style.Theme_AppCompat_Light_DarkActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_param_metier_etudiant_prof);
-        getSupportActionBar().setTitle("Nom et prénom éléve");
+        Intent intent = getIntent();
+        nomEtudiant = intent.getParcelableExtra("ETUDIANT");
+        getSupportActionBar().setTitle(nomEtudiant.getName());
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
         section = new ArrayList<sectionMetier>();
 
@@ -47,7 +52,7 @@ public class View_ParamEtudiant extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new AdapterSectionMetierProf.OnItemClickListener() {
             @Override
             public void checkBox(){
-                //Notifier les changements dans la BD
+                //Notifier les changements
             }
 
             @Override
@@ -68,6 +73,11 @@ public class View_ParamEtudiant extends AppCompatActivity {
 
     public void confirmerButtonClick(View view) {
         //sauvegarderDonner();
+        //Retour a l'activité precedente
         finish();
+    }
+
+    public void sauvegerderDonner(){
+        //Code pour sauvegarder les changements dans la BD
     }
 }
