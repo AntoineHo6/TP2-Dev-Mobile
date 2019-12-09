@@ -7,4 +7,11 @@
         android:title="Log out"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
 </menu>
