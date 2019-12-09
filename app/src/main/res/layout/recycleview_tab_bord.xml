@@ -5,6 +5,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
