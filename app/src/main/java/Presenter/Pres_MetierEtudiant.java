@@ -77,22 +77,22 @@ public class Pres_MetierEtudiant extends AppCompatActivity
 
         }
         else if (id == R.id.nav_matiere_et_produits) {
-            openVisualiserSection(0);
+            openMetierEtudiant(0);
         }
         else if (id == R.id.nav_equipements) {
-            openVisualiserSection(1);
+            openMetierEtudiant(1);
         }
         else if (id == R.id.nav_tache_et_exigences) {
-            openVisualiserSection(2);
+            openMetierEtudiant(2);
         }
         else if (id == R.id.nav_individu) {
-            openVisualiserSection(3);
+            openMetierEtudiant(3);
         }
         else if (id == R.id.nav_env_de_travail) {
-            openVisualiserSection(4);
+            openMetierEtudiant(4);
         }
         else if (id == R.id.nav_res_humaines) {
-            openVisualiserSection(5);
+            openMetierEtudiant(5);
         }
         else {  // envoyer un email
 
@@ -103,10 +103,10 @@ public class Pres_MetierEtudiant extends AppCompatActivity
         return true;
     }
 
-    private void openVisualiserSection(int idSection) {
-        Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
-        intent.putExtra("idSection", idSection);
-        startActivity(intent);
+    private void openMetierEtudiant(int idSection) {
+        //Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+//        intent.putExtra("idSection", idSection);
+//        startActivity(intent);
     }
 
 }
