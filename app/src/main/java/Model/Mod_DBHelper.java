@@ -37,7 +37,16 @@ public class Mod_DBHelper {
         SECTIONS("sections"),
         QUESTIONS_DEFAULT("questions-defaut"),
         QUESTIONS_GROUP ("questions-groupe"),
-        QUESTIONS_PER("questions-personalisees");
+        QUESTIONS_PER("questions-personalisees"),
+        QUESTIONS("questions"),
+        COMMENTS("commentaires"),
+        CURRENT_USER("auth/compte"),
+        USERS("comptes"),
+        ROLES("roles"),
+        INTERNSHIPS("stages"),
+        INTERNSHIPS_YEARS("annees-scolaire"),
+        STUDENTS("etudiants"),
+        TEACHERS("enseignants");
 
         private String type;
         Table(String sections) {
@@ -84,9 +93,6 @@ public class Mod_DBHelper {
                         token_type = findString(response, "token_type");
                         role_id = findString(response, "role_id");
 
-//                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
-//                        else openMetierEtudiant();
-                        // TEMPORARY
                         if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
                         else openMetierEtudiant();
 
@@ -94,6 +100,16 @@ public class Mod_DBHelper {
                         obtenirInfo(API+ Table.QUESTIONS_DEFAULT.getType(), Table.QUESTIONS_DEFAULT.getType());
                         obtenirInfo(API+ Table.QUESTIONS_PER.getType(), Table.QUESTIONS_PER.getType());
                         obtenirInfo(API+ Table.QUESTIONS_GROUP.getType(), Table.QUESTIONS_GROUP.getType());
+                        obtenirInfo(API+ Table.QUESTIONS.getType(), Table.QUESTIONS.getType());
+                        obtenirInfo(API+ Table.COMMENTS.getType(), Table.COMMENTS.getType());
+                        obtenirInfo(API+ Table.CURRENT_USER.getType(), Table.CURRENT_USER.getType());
+                        obtenirInfo(API+ Table.USERS.getType(), Table.USERS.getType());
+                        obtenirInfo(API+ Table.ROLES.getType(), Table.ROLES.getType());
+                        obtenirInfo(API+ Table.INTERNSHIPS.getType(), Table.INTERNSHIPS.getType());
+                        obtenirInfo(API+ Table.INTERNSHIPS_YEARS.getType(), Table.INTERNSHIPS_YEARS.getType());
+                        obtenirInfo(API+ Table.CURRENT_USER.getType(), Table.CURRENT_USER.getType());
+                        obtenirInfo(API+ Table.STUDENTS.getType(), Table.STUDENTS.getType());
+                        obtenirInfo(API+ Table.TEACHERS.getType(), Table.TEACHERS.getType());
 
                     }
                 },
