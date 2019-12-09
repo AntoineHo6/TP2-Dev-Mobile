@@ -254,11 +254,6 @@ public class Mod_DBHelper {
         return finalValue;
     }
 
-
-    public void RetrieveUserData(){
-
-    }
-
     public void DisconnectUser(){
         if (access_token.isEmpty()) {
             return;
@@ -279,11 +274,7 @@ public class Mod_DBHelper {
                 });
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
     }
-
-    public void TypeOfUser(){
-
-    }
-
+    
     public String GetData(Table tableName,String id){
         TempDB = getSharedPreference(Context.MODE_APPEND);
         String data = TempDB.getString(tableName.getType()+"_"+id, "not_found");
