@@ -1,6 +1,7 @@
 package Presenter;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -80,8 +81,8 @@ public class Pres_TableauDeBord extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
+        if (id == R.id.nav_accueil) {
+
         }
         else if (id == R.id.nav_send) {
 

@@ -1,39 +1,27 @@
 package Presenter;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.dev.TP2_Mobile.R;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
-import View.MetierAdapter;
 
-public class Pres_Metier extends AppCompatActivity
+public class Pres_MetierEtudiant extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
-    ConstraintLayout layout;
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private MetierAdapter adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        layout = findViewById(R.id.recycleview_metier_etudiant);
-
         setContentView(R.layout.activity_metier_etudiant);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -45,9 +33,6 @@ public class Pres_Metier extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
-
-        buildRecycleView();
     }
 
     @Override
@@ -88,10 +73,28 @@ public class Pres_Metier extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
+        if (id == R.id.nav_accueil) {
+
         }
-        else if (id == R.id.nav_send) {
+        else if (id == R.id.nav_matiere_et_produits) {
+            openMetierEtudiant(0);
+        }
+        else if (id == R.id.nav_equipements) {
+            openMetierEtudiant(1);
+        }
+        else if (id == R.id.nav_tache_et_exigences) {
+            openMetierEtudiant(2);
+        }
+        else if (id == R.id.nav_individu) {
+            openMetierEtudiant(3);
+        }
+        else if (id == R.id.nav_env_de_travail) {
+            openMetierEtudiant(4);
+        }
+        else if (id == R.id.nav_res_humaines) {
+            openMetierEtudiant(5);
+        }
+        else {  // envoyer un email
 
         }
 
@@ -100,35 +103,10 @@ public class Pres_Metier extends AppCompatActivity
         return true;
     }
 
-    private void buildRecycleView() {
-        recyclerView = findViewById(R.id.recycleview_metier_etudiant);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        ArrayList<String> list = new ArrayList<String>(Arrays.asList("M", "É", "T", "I", "E", "R"));
-        adapter = new MetierAdapter(list);
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new MetierAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                notifyItemSelected(position);
-            }
-
-            @Override
-            public void onDeleteClick(int position) {
-                notifyDeleteSelected(position);
-            }
-        });
+    private void openMetierEtudiant(int idSection) {
+        //Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+//        intent.putExtra("idSection", idSection);
+//        startActivity(intent);
     }
 
-    private void notifyDeleteSelected(int position) {
-    }
-
-    private void notifyItemSelected(int position) {
-
-
-
-    }
 }
