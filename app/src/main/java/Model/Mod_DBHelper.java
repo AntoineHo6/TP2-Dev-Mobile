@@ -74,8 +74,8 @@ public class Mod_DBHelper {
 
         JSONObject parameters = new JSONObject();
         try {
-            parameters.put("email", "test.user@email.com");
-            parameters.put("mot_de_passe", "password");
+            parameters.put("email", email.getText().toString());
+            parameters.put("mot_de_passe", password.getText().toString());
             parameters.put("remember_me", false);
         } catch (Exception e) {
         }
