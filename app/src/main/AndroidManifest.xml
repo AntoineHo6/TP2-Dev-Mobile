@@ -25,7 +25,7 @@
         </activity>
         <activity android:name="Presenter.Pres_TableauDeBord" />
         <activity
-            android:name="View.View_ParamEtudiant"
+            android:name="Presenter.Pres_ParamEtudiant"
             android:parentActivityName="Presenter.Pres_TableauDeBord"/>
         <activity android:name="Presenter.Pres_MetierEtudiant"></activity>
         <activity android:name="Presenter.Pres_VisualiserSection"></activity>

@@ -1,4 +1,4 @@
-package View;
+package Presenter;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import Adapter.AdapterSectionMetierProf;
 import Model.sectionMetier;
 import Presenter.Student;
 
-public class View_ParamEtudiant extends AppCompatActivity {
+public class Pres_ParamEtudiant extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Student nomEtudiant;
@@ -58,8 +58,15 @@ public class View_ParamEtudiant extends AppCompatActivity {
             @Override
             public void onEditClick(int position) {
                 //Ouvre l'activité visualiser section
+                openVisualiserSection();
             }
         });
+    }
+
+    private void openVisualiserSection() {
+        Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+        //intent.putExtra("idSection", idSection);
+        startActivity(intent);
     }
 
     private void ajouterDonnerList(){
