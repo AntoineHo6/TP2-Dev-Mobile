@@ -31,7 +31,7 @@ public class Mod_DBHelper {
     private String  token_type = "";
     private String role_id = "";
 
-    public enum Table {
+    enum Table {
         SECTIONS("sections"),
         QUESTIONS_DEFAULT("questions-defaut"),
         QUESTIONS_GROUP ("questions-groupe"),

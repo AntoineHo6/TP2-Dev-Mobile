@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 
 import com.dev.TP2_Mobile.R;
 
-import Model.Mod_DBHelper;
 import Model.Mod_VisualiserSection;
 import View.View_VisualisationSection;
 
@@ -19,16 +18,14 @@ public class Pres_VisualiserSection extends AppCompatActivity {
     View_VisualisationSection view;
     Mod_VisualiserSection model;
 
-    Mod_DBHelper DataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualiser_section);
 
-        DataBase = new Mod_DBHelper(this);
 
-        Fragment frag = new VisualiserSectionFrag("Question 1", "Reponse 1", DataBase);
+        Fragment frag = new VisualiserSectionFrag("Question 1", "Reponse 1");
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
 
         Toolbar toolbar = findViewById(R.id.toolbar);

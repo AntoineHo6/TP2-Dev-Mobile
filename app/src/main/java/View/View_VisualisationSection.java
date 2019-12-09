@@ -24,7 +24,6 @@ public class View_VisualisationSection {
                 break;
             case 0:
                 titreSection.setText(R.string.matiere_et_produits);
-
                 break;
             case 1:
                 titreSection.setText(R.string.equipements);
