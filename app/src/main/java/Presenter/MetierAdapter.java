@@ -1,10 +1,8 @@
-package View;
+package Presenter;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +11,7 @@ import com.dev.TP2_Mobile.R;
 
 import java.util.ArrayList;
 
-class MetierAdapter extends RecyclerView.Adapter<MetierAdapter.MetierViewHolder> {
+public class MetierAdapter extends RecyclerView.Adapter<MetierAdapter.MetierViewHolder> {
     private ArrayList<String> list;
     private OnItemClickListener listener;
 

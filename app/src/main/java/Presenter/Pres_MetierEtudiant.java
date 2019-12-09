@@ -1,36 +1,28 @@
 package Presenter;
 
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.dev.TP2_Mobile.R;
 import com.google.android.material.navigation.NavigationView;
 
-import Model.Mod_TableauDeBord;
-import View.View_TableauDeBord;
 
-public class Pres_TableauDeBord extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
 
-    View_TableauDeBord view;
-    Mod_TableauDeBord model;
+public class Pres_MetierEtudiant extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tableau_de_bord);
-
-        view = new View_TableauDeBord();
-        model = new Mod_TableauDeBord();
+        setContentView(R.layout.activity_metier_etudiant);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -84,7 +76,25 @@ public class Pres_TableauDeBord extends AppCompatActivity
         if (id == R.id.nav_accueil) {
 
         }
-        else if (id == R.id.nav_send) {
+        else if (id == R.id.nav_matiere_et_produits) {
+            openMetierEtudiant(0);
+        }
+        else if (id == R.id.nav_equipements) {
+            openMetierEtudiant(1);
+        }
+        else if (id == R.id.nav_tache_et_exigences) {
+            openMetierEtudiant(2);
+        }
+        else if (id == R.id.nav_individu) {
+            openMetierEtudiant(3);
+        }
+        else if (id == R.id.nav_env_de_travail) {
+            openMetierEtudiant(4);
+        }
+        else if (id == R.id.nav_res_humaines) {
+            openMetierEtudiant(5);
+        }
+        else {  // envoyer un email
 
         }
 
@@ -93,7 +103,11 @@ public class Pres_TableauDeBord extends AppCompatActivity
         return true;
     }
 
-
-
+    private void openMetierEtudiant(int idSection) {
+        // CHANGER A TRUC DE LUKE
+        Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+        intent.putExtra("idSection", idSection);
+        startActivity(intent);
+    }
 
 }
