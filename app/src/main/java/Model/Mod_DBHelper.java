@@ -2,6 +2,7 @@ package Model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -28,7 +29,28 @@ public class Mod_DBHelper {
 
     private String  access_token = "";
     private String  token_type = "";
-    public String role_id = "";
+    private String role_id = "";
+
+    enum Table {
+        SECTIONS("sections"),
+        QUESTIONS_DEFAULT("questions-defaut"),
+        QUESTIONS_GROUP ("questions-groupe"),
+        QUESTIONS_PER("questions-personalisees");
+
+        private String type;
+        Table(String sections) {
+            type = sections;
+        }
+
+        public String getType() {
+            return type;
+        }
+    }
+
+    private final String DATABASE = "DATABASE";
+
+    private int comptItem;
+    private SharedPreferences TempDB;
 
     private Context loginContext;
 
@@ -36,9 +58,6 @@ public class Mod_DBHelper {
         this.loginContext = loginContext;
     }
 
-    public void TakeIntents(){
-
-    }
     public void ConnectUser(final EditText email, final EditText password){
         DisconnectUser();
 
@@ -66,11 +85,10 @@ public class Mod_DBHelper {
                         if(Integer.parseInt(role_id) == 2) openTableauDeBord();
                         else openMetierEtudiant();
 
-                        Log.v("skjhdaskhj",role_id);
-                        obtenirInfo(API+"sections", "sections");
-                        obtenirInfo(API+"questions-defaut", "questions-defaut");
-                        obtenirInfo(API+"questions-personalisees", "questions-personalisees");
-                        obtenirInfo(API+"questions-groupe", "questions-groupe");
+                        obtenirInfo(API+ Table.SECTIONS.getType(), Table.SECTIONS.getType());
+                        obtenirInfo(API+ Table.QUESTIONS_DEFAULT.getType(), Table.QUESTIONS_DEFAULT.getType());
+                        obtenirInfo(API+ Table.QUESTIONS_PER.getType(), Table.QUESTIONS_PER.getType());
+                        obtenirInfo(API+ Table.QUESTIONS_GROUP.getType(), Table.QUESTIONS_GROUP.getType());
 
                     }
                 },
@@ -78,11 +96,11 @@ public class Mod_DBHelper {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("onErrorResponse", error.toString());
+
                         email.setError("Invalid");
                         password.setError("Invalid");
                     }
                 });
-
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
     }
 
@@ -100,6 +118,8 @@ public class Mod_DBHelper {
         if (access_token.isEmpty()) {
             return;
         }
+
+        TempDB = getSharedPreference(Context.MODE_PRIVATE);
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -134,6 +154,12 @@ public class Mod_DBHelper {
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
     }
 
+    private SharedPreferences getSharedPreference(int PrefContext) {
+
+        return loginContext.getSharedPreferences(DATABASE, PrefContext);
+
+    }
+
     private void parseJSONArray(JSONArray array, String nom) {
         if (array == null || array.length() == 0) {
             return;
@@ -150,12 +176,17 @@ public class Mod_DBHelper {
         }
     }
 
-    public static void enumerateObjet(JSONObject jsonObject, String nom) {
+    public void enumerateObjet(JSONObject jsonObject, String nom) {
         if (jsonObject == null) {
             return;
         }
 
+        String id = "";
+        String SetData = "";
+
         Iterator<String> keys = jsonObject.keys();
+
+        SharedPreferences.Editor edit = TempDB.edit();
 
         while(keys.hasNext()) {
             String key = keys.next();
@@ -167,12 +198,22 @@ public class Mod_DBHelper {
             }
             if (obj != null) {
                 if (obj instanceof JSONObject) {
-                    enumerateObjet((JSONObject) obj, nom + "1");
+                    enumerateObjet((JSONObject) obj, nom);
                 } else {
-                    Log.d("enumerateObjet", nom + "_____________" + key + " : " + obj.toString());
+
+                    if(key.matches("^id$")){
+                        id = obj.toString();
+                    }
+
+                    SetData += key+"="+obj.toString()+";";
+                    //Log.d("enumerateObjet", nom + "_" + id +"========" + SetData);
+                    edit.putString(nom+"_"+id, SetData);
+
                 }
             }
         }
+
+        edit.commit();
     }
 
     public static String findValue(JSONObject jObj, String findKey) throws JSONException {
@@ -220,6 +261,13 @@ public class Mod_DBHelper {
 
     public void TypeOfUser(){
 
+    }
+
+    public String GetData(Table tableName,String id){
+        TempDB = getSharedPreference(Context.MODE_APPEND);
+        String data = TempDB.getString(tableName.getType()+"_"+id, "not_found");
+        Log.v("Ceci est un test", data);
+        return data;
     }
     private void openMetierEtudiant() {
         Intent intent = new Intent(loginContext, Pres_Metier.class);
