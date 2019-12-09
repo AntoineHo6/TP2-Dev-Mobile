@@ -104,9 +104,9 @@ public class Pres_MetierEtudiant extends AppCompatActivity
     }
 
     private void openMetierEtudiant(int idSection) {
-        //Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
-//        intent.putExtra("idSection", idSection);
-//        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), Pres_SelectionMetier.class);
+        intent.putExtra("idSection", idSection);
+        startActivity(intent);
     }
 
 }

@@ -5,11 +5,17 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.dev.TP2_Mobile.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import Presenter.MetierAdapter;
 import Presenter.Pres_SelectionMetier;
 
 public class View_MetierEtudiant extends AppCompatActivity {
