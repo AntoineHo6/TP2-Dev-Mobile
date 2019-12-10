@@ -1,20 +1,21 @@
 package View;
 
-
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.widget.TextView;
 
 import com.dev.TP2_Mobile.R;
 
-public class View_VisualisationSection {
-
+public class View_SelectionMetier {
     AppCompatActivity activity;
     TextView titreSection;
 
-    public View_VisualisationSection(AppCompatActivity activity) {
+    public View_SelectionMetier(AppCompatActivity activity) {
         this.activity = activity;
-        titreSection = activity.findViewById(R.id.tvTitreSection);
+        titreSection = activity.findViewById(R.id.titre);
     }
 
     public void updateTitreSection(int idSection) {
@@ -42,4 +43,6 @@ public class View_VisualisationSection {
                 break;
         }
     }
+
+
 }

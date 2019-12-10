@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import com.dev.TP2_Mobile.R;
 
-import Model.Mod_DBHelper;
-
 public class VisualiserSectionFrag extends Fragment {
 
     private String question;

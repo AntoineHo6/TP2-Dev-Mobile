@@ -104,8 +104,7 @@ public class Pres_MetierEtudiant extends AppCompatActivity
     }
 
     private void openMetierEtudiant(int idSection) {
-        // CHANGER A TRUC DE LUKE
-        Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+        Intent intent = new Intent(getApplicationContext(), Pres_SelectionMetier.class);
         intent.putExtra("idSection", idSection);
         startActivity(intent);
     }
