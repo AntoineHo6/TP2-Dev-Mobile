@@ -71,7 +71,7 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/btnAjoutCommentaire"
+        android:id="@+id/btnCommentaire"
         android:layout_width="111dp"
         android:layout_height="47dp"
         android:background="@color/colorPrimary"
