@@ -74,8 +74,8 @@ public class Mod_DBHelper {
 
         JSONObject parameters = new JSONObject();
         try {
-            parameters.put("email", email.getText().toString());
-            parameters.put("mot_de_passe", password.getText().toString());
+            parameters.put("email", email.getText().toString().trim());
+            parameters.put("mot_de_passe", password.getText().toString().trim());
             parameters.put("remember_me", false);
         } catch (Exception e) {
         }
@@ -455,14 +455,13 @@ public class Mod_DBHelper {
 
         String data = GetData(tableName, id);
         String[] Columns = data.split(";");
-        String regex = "^"+ColumnName+"$";
 
         String value= "not_found";
 
         if(data != "not_found") {
             for (String field : Columns) {
 
-                if (field.matches(regex)) {
+                if (field.contains(ColumnName)) {
                     String[] Column = field.split("=");
                     value = Column[1];
                 }
