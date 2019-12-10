@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dev.TP2_Mobile.R;
 import java.util.ArrayList;
 import Adapter.AdapterSectionMetierProf;
+import Model.Mod_DBHelper;
 import Model.sectionMetier;
 import Presenter.Student;
 
@@ -25,9 +26,11 @@ public class Pres_ParamEtudiant extends AppCompatActivity {
     private AdapterSectionMetierProf mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<sectionMetier> section;
+    private Mod_DBHelper database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        database = new Mod_DBHelper(this);
         setTheme(R.style.Theme_AppCompat_Light_DarkActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_param_metier_etudiant_prof);
@@ -101,5 +104,24 @@ public class Pres_ParamEtudiant extends AppCompatActivity {
 
     public void sauvegerderDonner(){
         //Code pour sauvegarder les changements dans la BD
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.logout) {
+            database.DisconnectUser();
+            Intent intent = new Intent(getApplicationContext(),
+                    View_LoginPage.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

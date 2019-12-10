@@ -30,21 +30,16 @@ public class Pres_TableauDeBord extends AppCompatActivity
     private StudentAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Student> list;
+    private Mod_DBHelper dataBase;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dataBase = new Mod_DBHelper(this);
 
-        list = new ArrayList<Student>();
-        list.add(new Student ("Antoine Ho", 50));
-        list.add(new Student("Kha Pham", 93));
-        list.add(new Student("Luke Noodley", 70));
-        list.add(new Student("Demetrious Johnson", 30));
-        list.add(new Student("Tom Jerry", 100));
-        list.add(new Student("Damien DeGaule", 76));
-        list.add(new Student("Dwayne Johnson", 60));
-        list.add(new Student("Vin Diesel", 60));
+
+        populateList();
         layoutManager = new LinearLayoutManager(this);
         adapter = new StudentAdapter(list);
 
@@ -61,6 +56,12 @@ public class Pres_TableauDeBord extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         buildRecycleView();
+    }
+
+    private void populateList() {
+        //Test avec 2 étudiants de la Base de donnée
+        list = new ArrayList<Student>();
+        list.add(dataBase.getDataColumn(dataBase.));
     }
 
     private void buildRecycleView() {
@@ -131,6 +132,8 @@ public class Pres_TableauDeBord extends AppCompatActivity
             }
         });
 
+
+
         return true;
     }
 
@@ -143,6 +146,10 @@ public class Pres_TableauDeBord extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.logout) {
+            dataBase.DisconnectUser();
+            Intent intent = new Intent(getApplicationContext(),
+                    View_LoginPage.class);
+            startActivity(intent);
             return true;
         }
 
