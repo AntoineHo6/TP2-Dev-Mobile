@@ -25,8 +25,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavig
 
 import Model.Mod_SelectionMetier;
 import View.View_SelectionMetier;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-public class Pres_SelectionMetier extends AppCompatActivity {
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+
+public class Pres_SelectionMetier extends AppCompatActivity{
 
     View_SelectionMetier view;
     Mod_SelectionMetier mod = new Mod_SelectionMetier();
@@ -42,9 +55,13 @@ public class Pres_SelectionMetier extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pres__selection_metier);
 
+        fragmentManager = getSupportFragmentManager();
+        FragmentTransaction t = fragmentManager.beginTransaction();
+
+
         Fragment_Home1 fragment = new Fragment_Home1();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-        fragmentManager = getSupportFragmentManager();
+
 
 
 
@@ -53,7 +70,10 @@ public class Pres_SelectionMetier extends AppCompatActivity {
         Button back = (Button) findViewById(R.id.btnBackEtudiant);
         Button forward = (Button) findViewById(R.id.btnFowardEtudiant);
 
-          back.setOnClickListener(new View.OnClickListener(){
+
+        //imageView = fragment.getImageViewPhoto();
+
+        back.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 onClickButtonBack(v);
@@ -88,25 +108,25 @@ public class Pres_SelectionMetier extends AppCompatActivity {
     }
 
     private void onClickButtonBack(View v) {
-//        fragmentTransaction = fragmentManager.beginTransaction();
-//        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-//        Fragment Newfragment = fragmentManager.findFragmentById(R.id.fragment_container);
-//        if(fragment!=null){
-//            if(fragment instanceof Fragment_Home2){
-//                fragmentTransaction.remove(fragment);
-//                fragmentTransaction.commit();
-//                Newfragment = new Fragment_Home1();
-//            }
-//
-//        }else{
-//            super.onBackPressed();
-//        }
-//
-//        fragmentTransaction=fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_container,Newfragment,"demofragment");
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-        takePicture(v);
+        fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+        Fragment Newfragment = fragmentManager.findFragmentById(R.id.fragment_container);
+        if(fragment!=null){
+            if(fragment instanceof Fragment_Home2){
+                fragmentTransaction.remove(fragment);
+                fragmentTransaction.commit();
+                Newfragment = new Fragment_Home1();
+            }
+
+        }else{
+            super.onBackPressed();
+        }
+
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container,Newfragment,"demofragment");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+        //takePicture(v);
     }
 
 
@@ -121,12 +141,13 @@ public class Pres_SelectionMetier extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
-            Bundle extras  = data.getExtras();
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
         }
-        super.onActivityResult(requestCode, resultCode, data);
+        //super.onActivityResult(requestCode, resultCode, data);
     }
 
 
