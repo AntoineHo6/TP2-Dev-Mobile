@@ -1,4 +1,4 @@
-package View;
+package Presenter;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import Adapter.AdapterSectionMetierProf;
 import Model.sectionMetier;
 import Presenter.Student;
 
-public class View_ParamEtudiant extends AppCompatActivity {
+public class Pres_ParamEtudiant extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Student nomEtudiant;
@@ -73,17 +73,24 @@ public class View_ParamEtudiant extends AppCompatActivity {
             @Override
             public void onEditClick(int position) {
                 //Ouvre l'activité visualiser section
+                openVisualiserSection(section.get(position));
             }
         });
     }
 
+    private void openVisualiserSection(sectionMetier section) {
+        Intent intent = new Intent(getApplicationContext(), Pres_VisualiserSection.class);
+        intent.putExtra("idSection", section.getIdSection());
+        startActivity(intent);
+    }
+
     private void ajouterDonnerList(){
-        section.add(new sectionMetier("Matières et produits", false));
-        section.add(new sectionMetier("Équipements", false));
-        section.add(new sectionMetier("Tâche et exigences", false));
-        section.add(new sectionMetier("Individu", false));
-        section.add(new sectionMetier("Environnement de travail", false));
-        section.add(new sectionMetier("Ressources humaines", false));
+        section.add(new sectionMetier("Matières et produits", false, 1));
+        section.add(new sectionMetier("Équipements", false, 2));
+        section.add(new sectionMetier("Tâche et exigences", false, 3));
+        section.add(new sectionMetier("Individu", false, 4));
+        section.add(new sectionMetier("Environnement de travail", false, 5));
+        section.add(new sectionMetier("Ressources humaines", false, 6));
     }
 
     public void confirmerButtonClick(View view) {

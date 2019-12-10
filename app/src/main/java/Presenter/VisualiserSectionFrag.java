@@ -17,12 +17,10 @@ public class VisualiserSectionFrag extends Fragment {
 
     private String question;
     private String reponse;
-    private Mod_DBHelper DataBase;
 
-    public VisualiserSectionFrag(String question, String reponse, Mod_DBHelper DataBase) {
+    public VisualiserSectionFrag(String question, String reponse) {
         this.question = question;
         this.reponse = reponse;
-        this.DataBase = DataBase;
     }
 
     @Nullable
@@ -31,8 +29,7 @@ public class VisualiserSectionFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_visualiser_section, container, false);
 
         TextView tvQuestion = view.findViewById(R.id.tvQuestion);
-        String test = DataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, "1");
-        tvQuestion.setText(test);
+        tvQuestion.setText(question);
 
         TextView tvReponse = view.findViewById(R.id.tvReponse);
         tvReponse.setText(reponse);
