@@ -97,8 +97,8 @@ public class Mod_DBHelper {
                         if(Integer.parseInt(role_id) == 2) openTableauDeBord();
                         else openMetierEtudiant();
                         // TEMPORARY
-                        //if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
-                        //else openMetierEtudiant();
+                        // if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
+                        // else openMetierEtudiant();
 
                         obtenirInfo(API+ Table.SECTIONS.getType(), Table.SECTIONS.getType());
                         obtenirInfo(API+ Table.QUESTIONS_DEFAULT.getType(), Table.QUESTIONS_DEFAULT.getType());

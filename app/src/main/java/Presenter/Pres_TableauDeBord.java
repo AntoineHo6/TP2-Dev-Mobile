@@ -23,12 +23,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-import Model.Mod_DBHelper;
-import View.View_LoginPage;
-import View.View_ParamEtudiant;
-import View.View_TableauDeBord;
-import Model.Mod_TableauDeBord;
-
 public class Pres_TableauDeBord extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -109,7 +103,7 @@ public class Pres_TableauDeBord extends AppCompatActivity
 
     private void openActivity2(Student student) {
         Intent intent = new Intent(getApplicationContext(),
-                View_ParamEtudiant.class);
+                Pres_ParamEtudiant.class);
         intent.putExtra("ETUDIANT", student);
         startActivity(intent);
 
