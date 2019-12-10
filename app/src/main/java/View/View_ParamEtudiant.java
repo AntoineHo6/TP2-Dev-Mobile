@@ -18,6 +18,7 @@ import Adapter.AdapterSectionMetierProf;
 import Model.Mod_DBHelper;
 import Model.sectionMetier;
 import Presenter.Student;
+import Presenter.Pres_LoginPage;
 
 public class View_ParamEtudiant extends AppCompatActivity {
 
@@ -110,7 +111,7 @@ public class View_ParamEtudiant extends AppCompatActivity {
         if (id == R.id.logout) {
             database.DisconnectUser();
             Intent i = new Intent(getApplicationContext(),
-                    View_LoginPage.class);
+                    Pres_LoginPage.class);
             startActivity(i);
             return true;
         }

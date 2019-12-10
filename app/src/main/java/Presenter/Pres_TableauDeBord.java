@@ -65,9 +65,20 @@ public class Pres_TableauDeBord extends AppCompatActivity
     }
 
     private void populateList() {
-        //Test avec 2 étudiants de la Base de donnée
         list = new ArrayList<Student>();
-        list.add(new Student("ssss",90));
+
+        //Test avec 1 de la Base de donnée (API non fonctionnelle) retourne not_found
+        list.add(new Student(dataBase.GetDataColumn(Mod_DBHelper.Table.STUDENTS, "1", Mod_DBHelper.Table.STUDENTS.name()),90));
+
+        //Ajouter d'autres étudiants
+        list.add(new Student ("Antoine Ho", 50));
+        list.add(new Student("Kha Pham", 93));
+        list.add(new Student("Luke Noodley", 70));
+        list.add(new Student("Demetrious Johnson", 30));
+        list.add(new Student("Tom Jerry", 100));
+        list.add(new Student("Damien DeGaule", 76));
+        list.add(new Student("Dwayne Johnson", 60));
+        list.add(new Student("Vin Diesel", 60));
     }
 
     private void buildRecycleView() {
@@ -154,7 +165,7 @@ public class Pres_TableauDeBord extends AppCompatActivity
         if (id == R.id.logout) {
             dataBase.DisconnectUser();
             Intent intent = new Intent(getApplicationContext(),
-                    View_LoginPage.class);
+                    Pres_LoginPage.class);
             startActivity(intent);
             return true;
         }
