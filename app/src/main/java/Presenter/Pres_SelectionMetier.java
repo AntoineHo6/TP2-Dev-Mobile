@@ -1,6 +1,5 @@
 package Presenter;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -14,31 +13,14 @@ import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 
-import com.dev.TP2_Mobile.Fragment_Home1;
-import com.dev.TP2_Mobile.Fragment_Home2;
-import com.dev.TP2_Mobile.Fragment_Home3;
+import com.dev.TP2_Mobile.Fragment_selection_metier;
 import com.dev.TP2_Mobile.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemReselectedListener;
 
 import Model.Mod_DBHelper;
 import Model.Mod_SelectionMetier;
 import View.View_SelectionMetier;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 
 public class Pres_SelectionMetier extends AppCompatActivity{
@@ -88,7 +70,7 @@ public class Pres_SelectionMetier extends AppCompatActivity{
             questionRaw = DataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));
         }
 
-        Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse 1");
+        Fragment frag = new Fragment_selection_metier(mod.getCurrentQuestion(), "Reponse 1");
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
 
         Button back = (Button) findViewById(R.id.btnBackEtudiant);
@@ -113,7 +95,7 @@ public class Pres_SelectionMetier extends AppCompatActivity{
     private void onClickButtonForward(View v) {
         if (mod.getCurrentQuestionIdx() + 1 < mod.getQuestions().size()) {
             mod.incCurrentQuestionIdx();
-            Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse arbitraire");
+            Fragment frag = new Fragment_selection_metier(mod.getCurrentQuestion(), "Reponse arbitraire");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
         }
 
@@ -123,7 +105,7 @@ public class Pres_SelectionMetier extends AppCompatActivity{
     private void onClickButtonBack(View v) {
         if (mod.getCurrentQuestionIdx() != 0) {
             mod.decCurrentQuestionIdx();
-            Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse arbitraire");
+            Fragment frag = new Fragment_selection_metier(mod.getCurrentQuestion(), "Reponse arbitraire");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
         }
     }

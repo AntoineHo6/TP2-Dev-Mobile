@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import static android.app.Activity.RESULT_OK;
 
-public class Fragment_Home1 extends Fragment implements View.OnClickListener{
+public class Fragment_selection_metier extends Fragment implements View.OnClickListener{
 
     private static final int REQUEST_IMAGE_CAPTURE = 101;
     ImageView imageView;
@@ -28,7 +28,7 @@ public class Fragment_Home1 extends Fragment implements View.OnClickListener{
     private String question;
     private String reponse;
 
-    public Fragment_Home1(String question, String reponse) {
+    public Fragment_selection_metier(String question, String reponse) {
         this.question = question;
         this.reponse = reponse;
     }
