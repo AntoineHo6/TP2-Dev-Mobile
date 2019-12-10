@@ -48,9 +48,6 @@ public class Pres_SelectionMetier extends AppCompatActivity{
     View_SelectionMetier view;
     Mod_SelectionMetier mod;
 
-
-
-
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
@@ -111,60 +108,9 @@ public class Pres_SelectionMetier extends AppCompatActivity{
                 onClickButtonForward(v);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-        //imageView = fragment.getImageViewPhoto();
-
-
-
-
-//        selectedFragment = new Fragment_Home1();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-
-
-
-
-
-
-
-
-
-
-        //fragmentManager = getSupportFragmentManager();
-        //FragmentTransaction t = fragmentManager.beginTransaction();
-
-
-        //Fragment_Home1 fragment = new Fragment_Home1();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-
-
     }
 
     private void onClickButtonForward(View v) {
-//        Fragment fragment;
-//        fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-//
-//        if(fragment instanceof Fragment_Home1){
-//            fragment = new Fragment_Home2();
-//        }
-//
-//        fragmentTransaction=fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_container,fragment,"demofragment");
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-
-
         if (mod.getCurrentQuestionIdx() + 1 < mod.getQuestions().size()) {
             mod.incCurrentQuestionIdx();
             Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse arbitraire");
@@ -180,33 +126,6 @@ public class Pres_SelectionMetier extends AppCompatActivity{
             Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse arbitraire");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
         }
-
-
-
-//        fragmentTransaction = fragmentManager.beginTransaction();
-//        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-//        Fragment Newfragment = fragmentManager.findFragmentById(R.id.fragment_container);
-//        if(fragment!=null){
-//            if(fragment instanceof Fragment_Home2){
-//                fragmentTransaction.remove(fragment);
-//                fragmentTransaction.commit();
-//                Newfragment = new Fragment_Home1();
-//            }
-//
-//        }else{
-//            super.onBackPressed();
-//        }
-//
-//        fragmentTransaction=fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_container,Newfragment,"demofragment");
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-
-
-
-
-
-
     }
 
 
@@ -227,29 +146,7 @@ public class Pres_SelectionMetier extends AppCompatActivity{
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
         }
-        //super.onActivityResult(requestCode, resultCode, data);
     }
-
-
-//    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//
-//            switch(menuItem.getItemId()){
-//                case R.id.nav_home:
-//                    selectedFragment = new Fragment_Home1();
-//                    break;
-//                case R.id.nav_home2:
-//                    selectedFragment = new Fragment_Home2();
-//                    break;
-//                case R.id.nav_home3:
-//                    selectedFragment = new Fragment_Home3();
-//                    break;
-//            }
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-//            return true;
-//        }
-//    };
 
 
 
@@ -263,6 +160,4 @@ public class Pres_SelectionMetier extends AppCompatActivity{
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
