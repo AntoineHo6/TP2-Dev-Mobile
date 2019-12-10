@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.TP2_Mobile.R;
 import com.google.android.material.navigation.NavigationView;
+import Model.Mod_DBHelper;
 
 import java.util.ArrayList;
 
