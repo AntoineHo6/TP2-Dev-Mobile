@@ -1,11 +1,16 @@
 package Presenter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -23,14 +28,14 @@ public class Pres_VisualiserSection extends AppCompatActivity {
     View_VisualisationSection view;
     Mod_VisualiserSection model;
 
-    Mod_DBHelper DataBase;
+    Mod_DBHelper dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualiser_section);
 
-        DataBase = new Mod_DBHelper(this);
+        dataBase = new Mod_DBHelper(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -44,7 +49,7 @@ public class Pres_VisualiserSection extends AppCompatActivity {
 
         // Stocker les questions de la section dans le model et faire afficher la premiere question dans le fragment
         int cursor = 1;
-        String questionRaw = DataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));
+        String questionRaw = dataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));
 
         while (!questionRaw.equals("not_found")){
             String[] firstSplit = questionRaw.split(";");
@@ -56,7 +61,7 @@ public class Pres_VisualiserSection extends AppCompatActivity {
             }
 
             cursor++;
-            questionRaw = DataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));
+            questionRaw = dataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));
         }
 
         Fragment frag = new VisualiserSectionFrag(model.getCurrentQuestion(), "Reponse 1");
@@ -94,9 +99,22 @@ public class Pres_VisualiserSection extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.logout:
+                Intent intent = new Intent(getApplicationContext(),
+                        Pres_LoginPage.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
     }
 
 
