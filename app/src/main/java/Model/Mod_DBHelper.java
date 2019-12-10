@@ -31,7 +31,7 @@ public class Mod_DBHelper {
     private String  token_type = "";
     private String role_id = "";
 
-    enum Table {
+    public enum Table {
         SECTIONS("sections"),
         QUESTIONS_DEFAULT("questions-defaut"),
         QUESTIONS_GROUP ("questions-groupe"),
@@ -82,7 +82,7 @@ public class Mod_DBHelper {
                         token_type = findString(response, "token_type");
                         role_id = findString(response, "role_id");
 
-                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
+                        if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
                         else openMetierEtudiant();
                         // TEMPORARY
                         // if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
