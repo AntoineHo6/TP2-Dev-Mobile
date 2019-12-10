@@ -109,9 +109,9 @@ public class View_ParamEtudiant extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.logout) {
             database.DisconnectUser();
-            Intent intent = new Intent(getApplicationContext(),
+            Intent i = new Intent(getApplicationContext(),
                     View_LoginPage.class);
-            startActivity(intent);
+            startActivity(i);
             return true;
         }
 
