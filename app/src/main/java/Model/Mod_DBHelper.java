@@ -16,8 +16,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import Presenter.Pres_MetierEtudiant;
@@ -35,7 +37,16 @@ public class Mod_DBHelper {
         SECTIONS("sections"),
         QUESTIONS_DEFAULT("questions-defaut"),
         QUESTIONS_GROUP ("questions-groupe"),
-        QUESTIONS_PER("questions-personalisees");
+        QUESTIONS_PER("questions-personalisees"),
+        QUESTIONS("questions"),
+        COMMENTS("commentaires"),
+        CURRENT_USER("auth/compte"),
+        USERS("comptes"),
+        ROLES("roles"),
+        INTERNSHIPS("stages"),
+        INTERNSHIPS_YEARS("annees-scolaire"),
+        STUDENTS("etudiants"),
+        TEACHERS("enseignants");
 
         private String type;
         Table(String sections) {
@@ -63,8 +74,8 @@ public class Mod_DBHelper {
 
         JSONObject parameters = new JSONObject();
         try {
-            parameters.put("email", "test.user@email.com");
-            parameters.put("mot_de_passe", "password");
+            parameters.put("email", email.getText().toString());
+            parameters.put("mot_de_passe", password.getText().toString());
             parameters.put("remember_me", false);
         } catch (Exception e) {
         }
@@ -82,6 +93,7 @@ public class Mod_DBHelper {
                         token_type = findString(response, "token_type");
                         role_id = findString(response, "role_id");
 
+
                         if(Integer.parseInt(role_id) == 2) openTableauDeBord();
                         else openMetierEtudiant();
                         // TEMPORARY
@@ -92,6 +104,16 @@ public class Mod_DBHelper {
                         obtenirInfo(API+ Table.QUESTIONS_DEFAULT.getType(), Table.QUESTIONS_DEFAULT.getType());
                         obtenirInfo(API+ Table.QUESTIONS_PER.getType(), Table.QUESTIONS_PER.getType());
                         obtenirInfo(API+ Table.QUESTIONS_GROUP.getType(), Table.QUESTIONS_GROUP.getType());
+                        obtenirInfo(API+ Table.QUESTIONS.getType(), Table.QUESTIONS.getType());
+                        obtenirInfo(API+ Table.COMMENTS.getType(), Table.COMMENTS.getType());
+                        obtenirInfo(API+ Table.CURRENT_USER.getType(), Table.CURRENT_USER.getType());
+                        obtenirInfo(API+ Table.USERS.getType(), Table.USERS.getType());
+                        obtenirInfo(API+ Table.ROLES.getType(), Table.ROLES.getType());
+                        obtenirInfo(API+ Table.INTERNSHIPS.getType(), Table.INTERNSHIPS.getType());
+                        obtenirInfo(API+ Table.INTERNSHIPS_YEARS.getType(), Table.INTERNSHIPS_YEARS.getType());
+                        obtenirInfo(API+ Table.CURRENT_USER.getType(), Table.CURRENT_USER.getType());
+                        obtenirInfo(API+ Table.STUDENTS.getType(), Table.STUDENTS.getType());
+                        obtenirInfo(API+ Table.TEACHERS.getType(), Table.TEACHERS.getType());
 
                     }
                 },
@@ -102,6 +124,173 @@ public class Mod_DBHelper {
 
                         email.setError("Invalid");
                         password.setError("Invalid");
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddUser(String nom, String prenom, String email, String mot_de_passe, String mot_de_passe_confirmations){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("nom", nom);
+            parameters.put("prenom", prenom);
+            parameters.put("email", email);
+            parameters.put("mot_de_passe", mot_de_passe);
+            parameters.put("mot_de_passe_confirmation", mot_de_passe_confirmations);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.USERS,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddStage(String internshipName){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("nom_stage", internshipName);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.INTERNSHIPS,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddDefaultQuestion(String question){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("question", question);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.QUESTIONS_DEFAULT,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddGroupQuestion(String question){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("question", question);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.QUESTIONS_GROUP,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddPerQuestion(String question){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("question", question);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.QUESTIONS_PER,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
+                    }
+                });
+        VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
+    }
+
+    public void AddComment(String commentType, String data){
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("comment_type", commentType);
+            parameters.put("data", data);
+        } catch (Exception e) {
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API + Table.COMMENTS,
+                parameters,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("onResponse", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.toString());
                     }
                 });
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
@@ -236,11 +425,6 @@ public class Mod_DBHelper {
         return finalValue;
     }
 
-
-    public void RetrieveUserData(){
-
-    }
-
     public void DisconnectUser(){
         if (access_token.isEmpty()) {
             return;
@@ -262,15 +446,51 @@ public class Mod_DBHelper {
         VolleySingleton.getInstance(loginContext).addToRequestQueue(request);
     }
 
-    public void TypeOfUser(){
-
-    }
-
     public String GetData(Table tableName,String id){
         TempDB = getSharedPreference(Context.MODE_APPEND);
         String data = TempDB.getString(tableName.getType()+"_"+id, "not_found");
-        Log.v("Ceci est un test", data);
         return data;
+    }
+    public String GetDataColumn(Table tableName,String id, String ColumnName){
+
+        String data = GetData(tableName, id);
+        String[] Columns = data.split(";");
+        String regex = "^"+ColumnName+"$";
+
+        String value= "not_found";
+
+        if(data != "not_found") {
+            for (String field : Columns) {
+
+                if (field.matches(regex)) {
+                    String[] Column = field.split("=");
+                    value = Column[1];
+                }
+            }
+        }
+
+        return value;
+    }
+
+    public List<String> GetTableContent(Table tableName){
+        TempDB = getSharedPreference(Context.MODE_APPEND);
+        String data = "";
+        List<String> tab = new ArrayList<>();
+        int id = 1;
+
+        while(data != "not_found") {
+
+            String strId = Integer.toString(id);
+            data = TempDB.getString(tableName.getType() + "_" + strId, "not_found");
+
+            if(data != "not_found") {
+                tab.add(data);
+            }
+
+            id++;
+        }
+
+        return tab;
     }
     private void openMetierEtudiant() {
         Intent intent = new Intent(loginContext, Pres_MetierEtudiant.class);
