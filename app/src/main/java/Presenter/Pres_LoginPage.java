@@ -59,8 +59,6 @@ public class Pres_LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DataBase.ConnectUser(Username, Password);
-                //openMetierEtudiant();
-                //openTableauDeBord();
             }
         });
     }
@@ -88,10 +86,5 @@ public class Pres_LoginPage extends AppCompatActivity {
     private void googleSignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-    private void openSectionMetierProf(){
-        Intent intent = new Intent(getApplicationContext(), Pres_ParamEtudiant.class);
-        startActivity(intent);
     }
 }

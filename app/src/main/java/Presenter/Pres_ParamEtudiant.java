@@ -70,12 +70,12 @@ public class Pres_ParamEtudiant extends AppCompatActivity {
     }
 
     private void ajouterDonnerList(){
-        section.add(new sectionMetier("Matières et produits", false, 0));
-        section.add(new sectionMetier("Équipements", false, 1));
-        section.add(new sectionMetier("Tâche et exigences", false, 2));
-        section.add(new sectionMetier("Individu", false, 3));
-        section.add(new sectionMetier("Environnement de travail", false, 4));
-        section.add(new sectionMetier("Ressources humaines", false, 5));
+        section.add(new sectionMetier("Matières et produits", false, 1));
+        section.add(new sectionMetier("Équipements", false, 2));
+        section.add(new sectionMetier("Tâche et exigences", false, 3));
+        section.add(new sectionMetier("Individu", false, 4));
+        section.add(new sectionMetier("Environnement de travail", false, 5));
+        section.add(new sectionMetier("Ressources humaines", false, 6));
     }
 
     public void confirmerButtonClick(View view) {
