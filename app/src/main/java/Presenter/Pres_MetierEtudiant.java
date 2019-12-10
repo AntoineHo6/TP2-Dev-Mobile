@@ -14,16 +14,20 @@ import android.view.MenuItem;
 import com.dev.TP2_Mobile.R;
 import com.google.android.material.navigation.NavigationView;
 
+import Model.Mod_DBHelper;
 
 
 public class Pres_MetierEtudiant extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
+
+    Mod_DBHelper dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metier_etudiant);
 
+        dataBase = new Mod_DBHelper(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -59,10 +63,13 @@ public class Pres_MetierEtudiant extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        //if (id == R.id.action_settings) {
-        //    return true;
-        //}
+        if (id == R.id.logout) {
+            dataBase.DisconnectUser();
+            Intent intent = new Intent(getApplicationContext(),
+                    Pres_LoginPage.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
