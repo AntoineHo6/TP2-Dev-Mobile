@@ -62,8 +62,11 @@ public class Pres_TableauDeBord extends AppCompatActivity
     private void populateList() {
         list = new ArrayList<Student>();
 
-        //Test avec 1 de la Base de donnée
-        list.add(new Student(dataBase.GetDataColumn(Mod_DBHelper.Table.USERS, "2", "nom"),90));
+        //Test avec 2 étudiants de la Base de donnée
+        list.add(new Student(dataBase.GetDataColumn(Mod_DBHelper.Table.USERS, "2", "nom")
+                + " " +dataBase.GetDataColumn(Mod_DBHelper.Table.USERS, "2", "prenom") ,90));
+        list.add(new Student(dataBase.GetDataColumn(Mod_DBHelper.Table.USERS, "3", "nom")
+                + " " +dataBase.GetDataColumn(Mod_DBHelper.Table.USERS, "3", "prenom") ,90));
 
         //Ajouter d'autres étudiants
         list.add(new Student ("Antoine Ho", 50));
