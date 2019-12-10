@@ -2,6 +2,7 @@ package Presenter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -23,6 +24,7 @@ import com.dev.TP2_Mobile.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemReselectedListener;
 
+import Model.Mod_DBHelper;
 import Model.Mod_SelectionMetier;
 import View.View_SelectionMetier;
 import androidx.fragment.app.FragmentManager;
@@ -41,9 +43,14 @@ import android.widget.TextView;
 
 public class Pres_SelectionMetier extends AppCompatActivity{
 
+    Mod_DBHelper DataBase;
+
     View_SelectionMetier view;
-    Mod_SelectionMetier mod = new Mod_SelectionMetier();
-    Fragment selectedFragment = null;
+    Mod_SelectionMetier mod;
+
+
+
+
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
@@ -55,30 +62,49 @@ public class Pres_SelectionMetier extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pres__selection_metier);
 
-        fragmentManager = getSupportFragmentManager();
-        FragmentTransaction t = fragmentManager.beginTransaction();
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        setSupportActionBar(toolbar);
 
+        DataBase = new Mod_DBHelper(this);
 
-        Fragment_Home1 fragment = new Fragment_Home1();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-
-
-
-
-
+        mod = new Mod_SelectionMetier();
         view = new View_SelectionMetier(this);
+
+        int idSection = getIntent().getIntExtra("idSection", -1);
+        view.updateTitreSection(idSection);
+
+        // Stocker les questions de la section dans le model et faire afficher la premiere question dans le fragment
+        int cursor = 1;
+        String questionRaw = DataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));
+
+        while (!questionRaw.equals("not_found")){
+            String[] firstSplit = questionRaw.split(";");
+            String section_id = firstSplit[4].split("=")[1];
+
+            if (Integer.parseInt(section_id) == idSection) {
+                String question = firstSplit[1].split("=")[1];
+                mod.getQuestions().add(question);
+            }
+
+            cursor++;
+            questionRaw = DataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));
+        }
+
+        Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse 1");
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
+
         Button back = (Button) findViewById(R.id.btnBackEtudiant);
-        Button forward = (Button) findViewById(R.id.btnFowardEtudiant);
-
-
-        //imageView = fragment.getImageViewPhoto();
-
         back.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 onClickButtonBack(v);
             }
         });
+
+
+
+        Button forward = (Button) findViewById(R.id.btnFowardEtudiant);
         forward.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -86,47 +112,101 @@ public class Pres_SelectionMetier extends AppCompatActivity{
             }
         });
 
+
+
+
+
+
+
+
+
+
+
+        //imageView = fragment.getImageViewPhoto();
+
+
+
+
 //        selectedFragment = new Fragment_Home1();
 //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
 //        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
+
+
+
+
+
+
+
+
+
+        //fragmentManager = getSupportFragmentManager();
+        //FragmentTransaction t = fragmentManager.beginTransaction();
+
+
+        //Fragment_Home1 fragment = new Fragment_Home1();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+
+
     }
 
     private void onClickButtonForward(View v) {
-        Fragment fragment;
-        fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+//        Fragment fragment;
+//        fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+//
+//        if(fragment instanceof Fragment_Home1){
+//            fragment = new Fragment_Home2();
+//        }
+//
+//        fragmentTransaction=fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fragment_container,fragment,"demofragment");
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
 
-        if(fragment instanceof Fragment_Home1){
-            fragment = new Fragment_Home2();
+
+        if (mod.getCurrentQuestionIdx() + 1 < mod.getQuestions().size()) {
+            mod.incCurrentQuestionIdx();
+            Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse arbitraire");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
         }
 
-        fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,fragment,"demofragment");
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
 
     }
 
     private void onClickButtonBack(View v) {
-        fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-        Fragment Newfragment = fragmentManager.findFragmentById(R.id.fragment_container);
-        if(fragment!=null){
-            if(fragment instanceof Fragment_Home2){
-                fragmentTransaction.remove(fragment);
-                fragmentTransaction.commit();
-                Newfragment = new Fragment_Home1();
-            }
-
-        }else{
-            super.onBackPressed();
+        if (mod.getCurrentQuestionIdx() != 0) {
+            mod.decCurrentQuestionIdx();
+            Fragment frag = new Fragment_Home1(mod.getCurrentQuestion(), "Reponse arbitraire");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
         }
 
-        fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,Newfragment,"demofragment");
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-        //takePicture(v);
+
+
+//        fragmentTransaction = fragmentManager.beginTransaction();
+//        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+//        Fragment Newfragment = fragmentManager.findFragmentById(R.id.fragment_container);
+//        if(fragment!=null){
+//            if(fragment instanceof Fragment_Home2){
+//                fragmentTransaction.remove(fragment);
+//                fragmentTransaction.commit();
+//                Newfragment = new Fragment_Home1();
+//            }
+//
+//        }else{
+//            super.onBackPressed();
+//        }
+//
+//        fragmentTransaction=fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fragment_container,Newfragment,"demofragment");
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
+
+
+
+
+
+
     }
 
 
@@ -173,6 +253,16 @@ public class Pres_SelectionMetier extends AppCompatActivity{
 
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 
 }

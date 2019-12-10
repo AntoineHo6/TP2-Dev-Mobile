@@ -87,6 +87,7 @@
         android:background="?android:attr/windowBackground" />-->
 
     <TextView
+        android:id="@+id/titre"
         android:layout_width="313dp"
         android:layout_height="46dp"
         android:layout_below="@+id/toolbar"

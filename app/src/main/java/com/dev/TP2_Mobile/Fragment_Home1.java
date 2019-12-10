@@ -25,12 +25,24 @@ public class Fragment_Home1 extends Fragment implements View.OnClickListener{
     ImageView imageView;
     //Button button;
 
+    private String question;
+    private String reponse;
+
+    public Fragment_Home1(String question, String reponse) {
+        this.question = question;
+        this.reponse = reponse;
+    }
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view =inflater.inflate(R.layout.fragment_home, container, false);
+
+        TextView tvQuestion = view.findViewById(R.id.QuestionFrag1);
+        tvQuestion.setText(question);
+
 
         imageView = view.findViewById(R.id.imageViewPhoto);
         Button button = view.findViewById(R.id.buttonAddPhoto);
