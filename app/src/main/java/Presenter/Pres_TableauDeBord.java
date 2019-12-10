@@ -67,7 +67,7 @@ public class Pres_TableauDeBord extends AppCompatActivity
     private void populateList() {
         //Test avec 2 étudiants de la Base de donnée
         list = new ArrayList<Student>();
-        list.add(dataBase.getDataColumn);
+        list.add(dataBase.getDataColumn(dataBase.));
     }
 
     private void buildRecycleView() {
