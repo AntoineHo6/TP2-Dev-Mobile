@@ -82,11 +82,11 @@ public class Mod_DBHelper {
                         token_type = findString(response, "token_type");
                         role_id = findString(response, "role_id");
 
-//                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
-//                        else openMetierEtudiant();
-                        // TEMPORARY
-                        if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
+                        if(Integer.parseInt(role_id) == 2) openTableauDeBord();
                         else openMetierEtudiant();
+                        // TEMPORARY
+                        // if(Integer.parseInt(role_id) == 2) openMetierEtudiant();
+                        // else openMetierEtudiant();
 
                         obtenirInfo(API+ Table.SECTIONS.getType(), Table.SECTIONS.getType());
                         obtenirInfo(API+ Table.QUESTIONS_DEFAULT.getType(), Table.QUESTIONS_DEFAULT.getType());

@@ -59,8 +59,6 @@ public class Pres_LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DataBase.ConnectUser(Username, Password);
-                //openMetierEtudiant();
-                //openTableauDeBord();
             }
         });
     }

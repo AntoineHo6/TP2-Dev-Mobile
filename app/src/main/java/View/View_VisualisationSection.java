@@ -22,22 +22,22 @@ public class View_VisualisationSection {
             case -1:
                 titreSection.setText("Erreur: Pas de titre");   // remove hardcoded string
                 break;
-            case 0:
+            case 1:
                 titreSection.setText(R.string.matiere_et_produits);
                 break;
-            case 1:
+            case 2:
                 titreSection.setText(R.string.equipements);
                 break;
-            case 2:
+            case 3:
                 titreSection.setText(R.string.tache_et_exigences);
                 break;
-            case 3:
+            case 4:
                 titreSection.setText(R.string.individu);
                 break;
-            case 4:
+            case 5:
                 titreSection.setText(R.string.env_de_travail);
                 break;
-            case 5:
+            case 6:
                 titreSection.setText(R.string.res_humaines);
                 break;
         }
