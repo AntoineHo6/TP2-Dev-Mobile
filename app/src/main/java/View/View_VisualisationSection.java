@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dev.TP2_Mobile.R;
 
+// C'est quoi la différence entre cette classe et View_SelectionMetier?
+// R.id.tvTitreSection versus R.id.titre?
+// Une super classe?
 public class View_VisualisationSection {
 
     AppCompatActivity activity;

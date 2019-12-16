@@ -84,6 +84,7 @@ public class Pres_MetierEtudiant extends AppCompatActivity
 
         }
         else if (id == R.id.nav_matiere_et_produits) {
+            // Pourquoi pas une constante au lieu de 1, 2, etc?
             openMetierEtudiant(1);
         }
         else if (id == R.id.nav_equipements) {

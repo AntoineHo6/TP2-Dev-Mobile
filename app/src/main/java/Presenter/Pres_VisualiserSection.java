@@ -47,6 +47,13 @@ public class Pres_VisualiserSection extends AppCompatActivity {
         int idSection = getIntent().getIntExtra("idSection", -1);
         view.updateTitreSection(idSection);
 
+        // Ici, on est dans la Vue
+        // mais on a du code qui va chercher des données dans le modèle
+        //
+        // Ce code devrait être dans le modèle, non?
+        //
+        // Et ça ressemble à du code qu'on retrouve dans Pres_SelectionMetier
+        //
         // Stocker les questions de la section dans le model et faire afficher la premiere question dans le fragment
         int cursor = 1;
         String questionRaw = dataBase.GetData(Mod_DBHelper.Table.QUESTIONS_DEFAULT, String.valueOf(cursor));

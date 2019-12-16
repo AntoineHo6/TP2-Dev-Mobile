@@ -16,6 +16,7 @@ import com.dev.TP2_Mobile.R;
 import java.util.ArrayList;
 import java.util.List;
 
+// Commentaires???
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder>
     implements Filterable {
     private List<Student> list;

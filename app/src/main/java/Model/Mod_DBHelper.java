@@ -69,11 +69,14 @@ public class Mod_DBHelper {
         this.loginContext = loginContext;
     }
 
+    // ah non, on ne passe pas un controle comme paramètre. Ce n'est pas recommandé et pas très portable
+    // on devrait passer un String
     public void ConnectUser(final EditText email, final EditText password){
         DisconnectUser();
 
         JSONObject parameters = new JSONObject();
         try {
+            // utiliser des constantes!!!!
             parameters.put("email", email.getText().toString().trim());
             parameters.put("mot_de_passe", password.getText().toString().trim());
             parameters.put("remember_me", false);
@@ -94,6 +97,9 @@ public class Mod_DBHelper {
                         role_id = findString(response, "role_id");
 
 
+                        // est-ce que Integer.parseInt throws une exception?
+                        // Au moins, avoir une constante pour etudiant et enseignant
+                        // 2 n'est pas évident
                         if(Integer.parseInt(role_id) == 2) openTableauDeBord();
                         else openMetierEtudiant();
                         // TEMPORARY
@@ -140,6 +146,8 @@ public class Mod_DBHelper {
         } catch (Exception e) {
         }
 
+        // t'as pas besoin du access_token and du token_type?
+        // Voir getHeaders() dans obtenirInfo
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API + Table.USERS,

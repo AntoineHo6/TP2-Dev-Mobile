@@ -21,10 +21,10 @@ public class View_SelectionMetier {
     public void updateTitreSection(int idSection) {
         switch (idSection) {
             case -1:
-                titreSection.setText("Erreur: Pas de titre");   // remove hardcoded string
+                titreSection.setText("Erreur: Pas de titre");   // remove hardcoded string // Oui, je suis d'accord.
                 break;
             case 1:
-                titreSection.setText(R.string.matiere_et_produits);
+                titreSection.setText(R.string.matiere_et_produits); // au moins, les autres sont correctes.
                 break;
             case 2:
                 titreSection.setText(R.string.equipements);

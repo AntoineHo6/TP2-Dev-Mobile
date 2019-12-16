@@ -1,0 +1,22 @@
+Bonjour,
+
+Après m'être loggé, l'affichage ne me dit pas quoi faire. Je choisis le hamburger??? Pas évident. L'écran est vide!
+
+Une fois que je choisis Matière et produits, l'activité n'affiche que "Matière et" sur mon téléphone (mais ça marche bien sur l'émulateur). 
+Je n'enlève pas de points pour cela, du moment que vous avez testé avec l'émulateur.
+
+Dans le fragment_home, il faut appuyer sur "Add Photo". Pourquoi en anglais? On travaille avec une commission scolaire francophone. Pourquoi pas de strings.xml?
+Au début de chaque classe, je mettrais un commentaire qui explique c'est quoi cette classe...
+
+C'est où que je mets ma réponse à la question? Le commentaire de l'enseignant?
+Comment je sauvegarde ma photo? Quand je reviens en arrière ou je passe à la prochaine question, elle n'est plus là. Rien n'est sauvegardé.
+Ok, vous n'avez pas pu vous connecter à l'API mais ce n'est pas une raison pour rien sauvegarder. Aucune infrastructure pour garder cette information. Vraiment?
+
+Dans le "Model", il y a plusieurs classes qui sont presque vides.
+
+Pourquoi le "envoyer un email? C'est quoi son but?
+
+Quand je me logge en tant qu'enseignant, je vois la progression et c'est tout. Pas de pourcentage genre 75%, juste une barre dont il faut estimer sa valeur.
+
+On dirait que vous n'êtiez pas motivé à faire ce projet. Ça va arriver des fois, vous avez à travailler sur quelque chose qui ne vous tente pas mais, comme vous êtes professionnels, 
+vous mettez tous les efforts pour le compléter parce que c'est votre responsabilité. 

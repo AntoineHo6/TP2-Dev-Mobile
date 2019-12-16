@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import Model.sectionMetier;
 
-
+// Pas beaucoup de commentaires
 public class AdapterSectionMetierProf
         extends RecyclerView.Adapter<AdapterSectionMetierProf.SectionMetierProfViewHolder> {
 

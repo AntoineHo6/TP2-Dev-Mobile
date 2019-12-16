@@ -16,6 +16,7 @@ public class View_LoginPage {
         this.activity = activity;
         ConstraintLayout constraintLayout = activity.findViewById(R.id.loginpage_layout);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        // Constantes?
         animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();

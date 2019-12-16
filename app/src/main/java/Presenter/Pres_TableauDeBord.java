@@ -154,6 +154,11 @@ public class Pres_TableauDeBord extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // What's up with all the comments in english.
+        //
+        // Si vous copiez du code de quelque part, traduire les commentaires
+        //
+        //
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.

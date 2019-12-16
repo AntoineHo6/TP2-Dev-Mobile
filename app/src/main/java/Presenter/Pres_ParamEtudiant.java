@@ -89,6 +89,7 @@ public class Pres_ParamEtudiant extends AppCompatActivity {
     }
 
     private void ajouterDonnerList(){
+        // strings.xml???
         section.add(new sectionMetier("Matières et produits", false, 1));
         section.add(new sectionMetier("Équipements", false, 2));
         section.add(new sectionMetier("Tâche et exigences", false, 3));

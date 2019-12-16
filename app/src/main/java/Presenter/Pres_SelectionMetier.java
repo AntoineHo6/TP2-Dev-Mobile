@@ -94,6 +94,7 @@ public class Pres_SelectionMetier extends AppCompatActivity{
         });
     }
 
+    // sans commentaires, j'ai un peu de difficulté à suivre.
     private void onClickButtonForward(View v) {
         if (mod.getCurrentQuestionIdx() + 1 < mod.getQuestions().size()) {
             mod.incCurrentQuestionIdx();

@@ -27,6 +27,8 @@ public class Student implements Parcelable {
         return progression;
     }
 
+    // La progression de l'étudiant ne devrait pas être calculée par cette classe?
+    // Cette classe ne fait vraiment pas grand-chose.
     public void setProgression(int progression) {
         this.progression = progression;
     }
